@@ -16,10 +16,6 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 const PORT = process.env.PORT || 3001;
 
-app.use((req, res) => {
-  res.send('Hello World');
-});
-
 
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);
