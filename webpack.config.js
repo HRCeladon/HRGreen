@@ -27,5 +27,12 @@ module.exports = {
         },
       ]
     },
+    devServer: {
+      static: {
+        directory: path.join(__dirname, "/client/dist/")
+      },
+      compress: true,
+      port: 3000,
+    }
     devtool: 'source-map'
 };
