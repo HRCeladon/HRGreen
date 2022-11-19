@@ -6,7 +6,8 @@ module.exports = {
     entry: path.join(__dirname, "/client/src/index.jsx"),
     output: {
         path: path.join(__dirname, '/client/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath:'/'
     },
     module: {
       rules: [
@@ -28,6 +29,7 @@ module.exports = {
       ]
     },
     devServer: {
+      historyApiFallback: true,
       static: {
         directory: path.join(__dirname, "/client/dist/")
       },
