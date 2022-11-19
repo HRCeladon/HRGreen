@@ -4,6 +4,15 @@ const mongoURI = 'mongodb://localhost:27017/trees';
 
 const db = mongoose.connect(mongoURI, { useNewUrlParser: true });
 
+let userSchema = mongoose.Schema({
+  _id: String, // email
+  password: String, // hashed password
+  firstName: String,
+  lastName: String
+})
+
+const Users = mongoose.model('Users', userSchema);
+
 db
   .then(db => console.log(`Connected to: ${mongoURI}`))
   .catch(err => {
@@ -11,4 +20,4 @@ db
     console.log(err);
   });
 
-module.exports = db;
+module.exports = Users;
