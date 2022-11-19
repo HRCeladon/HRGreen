@@ -1,0 +1,51 @@
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 10;
+  animation-name: slidein;
+  animation-duration: 0.5s;
+}
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    width: 100%;
+  }
+  to {
+    margin-bottom: 0%;
+    width: 100%;
+  }
+}
+.modal-content {
+  border-radius: 1rem;
+  background-color: #C4A484;
+  height: fit-content;
+  width: 75%;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+  gap: 10px;
+}
+.modal-header {
+  font-size: 28px
+}
+.modal-footer {
+  display: flex;
+  justify-content: space-around;
+}
+.modal-button {
+
+}
+.modal-segment {
+  margin: 20px 0 0 0;
+}
