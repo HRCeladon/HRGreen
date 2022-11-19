@@ -15,9 +15,9 @@ export default function App() {
     <>
         <div>Hello World!</div>
         <button className='contact-us-buton' onClick={() => setContactUs(true)}>Contact Us</button>
-        {/* <input type='button' value='Start Planning Trip' onClick={() => setPlanner(!showPlanner)}/> */}
+        <button className='trip-planner-button' onClick={() => setPlanner(true)}>Plan New Trip</button>
         <ContactUs className='contact-us-form' showContactUs={showContactUs} onClose={() => setContactUs(false)}/>
-        <Planner showPlanner={showPlanner}/>
+        <Planner className='trip-planner-form' showPlanner={showPlanner} onClose={() => setPlanner(false)}/>
     </>
   )
 }
