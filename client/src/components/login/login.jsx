@@ -1,6 +1,8 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import axios from 'axios';
+import './style.css';
+import trees from './trees.png';
 
 export default function Login () {
   const [inputEmail, setInputEmail] = useState('');
@@ -24,13 +26,24 @@ export default function Login () {
   }
 
   return (
-    <div>
-      <h3>Log In</h3>
-      <label>Email</label><br/>
-      <input onChange={(e) => setInputEmail(e.target.value)}/><br/>
-      <label>Password</label><br/>
-      <input id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
-      <button onClick={login}>Log In</button>
+    <div className="modalBackground">
+      <div className="modalContent">
+        <h2>Log In</h2>
+        <img src={trees}/>
+        <div className="form">
+          <div className="modalBody">
+            <label>Email</label><br/>
+            <input onChange={(e) => setInputEmail(e.target.value)}/><br/>
+            <label>Password</label><br/>
+            <input id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
+          </div>
+          <div className="modalFooter">
+            <button onClick={login}>Log In</button><br/>
+            OR
+            <br/><button>Create Account</button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
