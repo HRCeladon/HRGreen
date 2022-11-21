@@ -38,7 +38,7 @@
     "argon2": "^0.30.2",
     "axios": "^1.1.2",
     "crypto": "^1.0.1",
-    "dotenv": "^16.0.3",
+    "dotenv-webpack": "^8.0.1",
     "express": "^4.15.0",
     "http": "^0.0.1-security",
     "mongoose": "^6.7.0",
