@@ -8,6 +8,7 @@ max-height: '100vh';
 overflow: hidden;
 `
 const InnerContainer = styled.div` //Nested inside the container
+box-sizing: content-box;
 position: relative;
 display: flex;
 flex-direction: row;
@@ -33,17 +34,21 @@ height: 188px;
 const ButtonR = styled.div`
 position: absolute;
 color: #d012c3;
-right 0%;
+right 2%;
+top: 45%;
+cursor: pointer;
 /* left: 100%; */
 `
 const ButtonL = styled.div`
 position: absolute;
+top: 45%;
+left: 2%;
+cursor: pointer;
 color: #d012c3;
 `
-//${props => props.color ? 'red' : 'blue'}
 
 //Set the Innercontainer to be the width of however many cards are needed to be displayed
-const ImageCarousel = ({ data, width }) => {
+const ImageCarousel = ({ data }) => {
 
   return (
     <CarouselContainer>
@@ -51,7 +56,7 @@ const ImageCarousel = ({ data, width }) => {
         <ButtonL>PREV</ButtonL>
         <ButtonR>NEXT</ButtonR>
         {data.map((pic, i) =>
-          <TreeCard width={width} key={i}>
+          <TreeCard key={i}>
             <Data src={pic} />
           </TreeCard>
         )}
@@ -60,3 +65,4 @@ const ImageCarousel = ({ data, width }) => {
   )
 }
 export default ImageCarousel;
+//${props => props.color ? 'red' : 'blue'}
