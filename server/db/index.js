@@ -8,7 +8,8 @@ let userSchema = mongoose.Schema({
   _id: String, // email
   password: String, // hashed password
   firstName: String,
-  lastName: String
+  lastName: String,
+  employee: Boolean
 })
 
 const Users = mongoose.model('Users', userSchema);
