@@ -5,7 +5,7 @@ import { useLocation, useParams, useSearchParams, BrowserRouter as Router, Route
 
 import Testimonials from './Testimonials/Testimonials.jsx'
 import HomePage from './HomePage/HomePage.jsx'
-import NavBar from './NavBar/Nav.jsx'
+
 
 
 
@@ -23,7 +23,6 @@ const renderView = () => {
 
   return (
       <main>
-        <NavBar />
         {renderView()}
       </main>
   )

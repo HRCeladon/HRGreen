@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style.css';
 import trees from './trees.png';
 
-export default function Login () {
+export default function Login ({ toggleModal }) {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
 
@@ -26,8 +26,16 @@ export default function Login () {
   }
 
   return (
-    <div className="modalBackground">
-      <div className="modalContent">
+    <div className="modalBackground"
+      onClick={() => {
+        toggleModal('login')
+      }}
+    >
+      <div className="modalContent"
+        onClick={e => {
+          e.stopPropagation();
+        }}
+      >
         <h2>Log In</h2>
         <img src={trees}/>
         <div className="form">

@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style.css';
 import trees from './trees.png';
 
-export default function Signup () {
+export default function Signup ({ toggleModal }) {
   const [inputFName, setInputFName] = useState('');
   const [inputLName, setInputLName] = useState('');
   const [inputEmail, setInputEmail] = useState('');
@@ -30,8 +30,14 @@ export default function Signup () {
   }
 
   return (
-    <div className="modalBackground">
-      <div className="modalContent">
+    <div className="modalBackground"
+      onClick={() => {
+        toggleModal('signup')
+     }}>
+      <div className="modalContent"
+        onClick={e => {
+          e.stopPropagation();
+        }}>
         <h2>Sign Up</h2>
         <img src={trees}/>
         <div className="form">
