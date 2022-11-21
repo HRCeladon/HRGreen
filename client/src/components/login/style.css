@@ -1,0 +1,74 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  width: 40%;
+  background-color: #D6E880;
+  padding: 10px;
+  padding-bottom: 100px;
+  text-align: center;
+  position: relative;
+}
+
+div.modalContent h2 {
+  margin: 10px;
+}
+
+div.modalContent input {
+  margin: 10px 0;
+  border: none;
+
+}
+
+div.modalContent img {
+  position: absolute;
+  width: 100%; /* width needs to match modalContent width amt */
+  bottom: 0;
+  left: 0;
+}
+
+.form {
+  margin: auto;
+  background-color: #F0EAD2;
+  min-width: fit-content;
+  width: 50%;
+  padding: 20px;
+  z-index: 1000;
+  position: relative;
+}
+
+.modalBody {
+  width: min-content;
+  margin: auto;
+  text-align: left;
+}
+
+div.form button {
+  background-color: #AACD4F;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+div.form button:hover {
+  background-color: #D6E880;
+}
+
+.modalFooter {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.modalFooter > * {
+  margin: 5px;
+}
