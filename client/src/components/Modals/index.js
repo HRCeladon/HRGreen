@@ -1,6 +1,7 @@
-import ContactUs from './ContactUs.jsx'
+import ContactUsButton from './ContactUsButton.jsx'
+import PlannerButton from './PlannerButton.jsx'
 import './styles.css'
 
-export default {
-  ContactUs
+export {
+  ContactUsButton, PlannerButton
 }

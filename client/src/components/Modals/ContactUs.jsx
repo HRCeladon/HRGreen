@@ -3,12 +3,20 @@ import './styles.css'
 
 const ContactUs = ({showContactUs, onClose}) => {
 
-  const [first, setFirst] = useState('')
-  const [last, setLast ] = useState('')
+  const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const [commnet, setComment] = useState('')
+  const [comment, setComment] = useState('')
 
+  const onContactSubmit = () => {
+    const contactInfo = {
+      name: name,
+      phone: phone,
+      email: email,
+      comment: comment
+    }
+    console.log('Contact Info: ', contactInfo)
+  }
   const formatPhone = (value) => {
     if (!value) return value;
     const phoneNumber = value.replace(/[^\d]/g, '');
@@ -18,9 +26,14 @@ const ContactUs = ({showContactUs, onClose}) => {
     return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
   }
   const handlePhoneInput = (e) => {
-    const formattedPhoneNumber = formatPhone(e.target.value)
+    const formattedPhoneNumber = formatPhone(e)
     setPhone(formattedPhoneNumber)
   }
+  // Helper function to verify email address
+  const verifyEmail = (email) => {
+    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return email.match(regex);
+  };
 
     const nicknameStyle = {
       display: 'inline-block',
@@ -62,16 +75,12 @@ const ContactUs = ({showContactUs, onClose}) => {
         {/* Modal Body */}
         <div className='modal-body' >
           <div className='modal-segment'>
-            <label htmlFor='first-name'>First Name</label><br/>
-            <input id='first-name' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='Example: John' onChange={(e) => setFirst(e.target.value)} style={nicknameStyle}/>
-          </div>
-          <div className='modal-segment'>
-            <label htmlFor='last-name'>Last Name</label><br/>
-            <input id='last-name' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='Example: Doe' onChange={(e)=>setLast(e)} style={nicknameStyle}/>
+            <label htmlFor='full-name'>Full Name</label><br/>
+            <input id='full-name' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='Example: John Doe' onChange={(e) => setName(e.target.value)} style={nicknameStyle}/>
           </div>
           <div className='modal-segment'>
             <label htmlFor='phone'>Phone Number</label><br/>
-            <input type='text' id='phone' style={{marginTop: '5px', height: '20px'}} onChange={(e) => handlePhoneInput(e)} value={phone} style={nicknameStyle}/>
+            <input type='text' id='phone' style={{marginTop: '5px', height: '20px'}} onChange={(e) => handlePhoneInput(e.target.value)} value={phone} style={nicknameStyle}/>
           </div>
           <div className='modal-segment'>
             <label htmlFor='your-email'>Your Email<span className="accent-star">*</span></label><br/>
@@ -88,12 +97,12 @@ const ContactUs = ({showContactUs, onClose}) => {
           </div>
           <div className='modal-segment'>
             <div htmlFor='your-question'>Comments/Question</div>
-            <textarea style={{marginTop: '5px'}} rows='5' cols='200' placeholder='Message' onChange={(e) => setAsk(e.target.value)} style={questionStyle}/>
+            <textarea style={{marginTop: '5px'}} rows='5' cols='200' placeholder='Message' onChange={(e) => setComment(e.target.value)} style={questionStyle}/>
           </div>
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
-          <button className='modal-button' >Submit</button>
+          <button className='modal-button' onClick={onContactSubmit}>Submit</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
       </div>
