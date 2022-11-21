@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ContactUs from './ContactUs.jsx'
 
 const ContactUsButton = () => {
-  const [showContactUs, setContactUs] = useState(false)
+  const [showContactUs, setContactUs] = useState(true)
 
   return (
     <>

@@ -26,40 +26,79 @@ body {
     width: 100%;
   }
 }
+.contact-us-buton {
+  position: sticky;
+  background-color: #AACD4F;
+  left: 100%;
+  top: 80%;
+  border-radius: 1rem 0 0 1rem;
+  height: 40px;
+  width: 10%;
+}
 .modal-content {
-  border-radius: 1rem;
-  background-color: #F0EAD2;
-  height: fit-content;
-  width: 75%;
-  border-radius: 1rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: space-between;
   gap: 10px;
+  border-radius: 1rem;
+  background-color: #F0EAD2;
+  height: fit-content;
+  width: 75%;
+  border-radius: 1rem;
 }
 .error {
   font-size: 18px;
   color: red
 }
 .modal-header {
-  font-size: 28px
+  height: fit-content;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 .modal-body {
   padding: 10px;
   font-size: 18px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #648A34;
+  border-bottom: 1px solid #648A34;
   margin: 0 2rem 0 2rem;
 }
 .modal-footer {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
 }
 .modal-button {
-
+  background-color: #AACD4F;
+  border-radius: 1rem;
+  width: 50%;
+  color: darkslategrey;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
 }
 .modal-segment {
-  margin: 10px 0 0 0;
+  margin: 0 auto;
+}
+/* Input fields for contact us form */
+#your-full-name, #your-phone, #your-email  {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 10px 0;
+  height: 30px;
+  width: 75%;
+  font-size: 18px;
+}
+#your-message {
+  width: 90%;
+  height: 100px;
+  margin: 5px 0 0 0;
+  font-size: 24px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  font-size: 18px;
+  resize: none;
 }
