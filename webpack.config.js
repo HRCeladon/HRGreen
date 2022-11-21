@@ -9,6 +9,11 @@ module.exports = {
         filename: 'bundle.js',
         publicPath:'/'
     },
+    plugins: [
+      new Dotenv({
+        systemvars: true,
+      }),
+    ],
     module: {
       rules: [
         {
