@@ -8,20 +8,22 @@ const formatPhone = (value) => {
   if (len < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
   return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
 }
-
 // Helper function to verify email address
 const verifyEmail = (email) => {
   let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return email.match(regex);
 };
-
+// Helper function to get selection from drop down menu in contact-us modal
+const getDropdownValue = () => {
+  let dropdown = document.getElementById('your-preferred-time')
+  return dropdown.value;
+}
 // Helper function to create a span element that shows the error message on submission
 const createErrorMsg = (message) => {
   let errorSpan = document.createElement('span');
   errorSpan.innerHTML = `<span>${message}</span><br/>`;
   return errorSpan;
 };
-
 const checkContactUsForm = (name, phone, email, message) => {
   // Flags for checking if input is correct
   let valid = true;
@@ -58,9 +60,9 @@ const checkContactUsForm = (name, phone, email, message) => {
   return valid;
 }
 
-
 export {
   formatPhone,
   verifyEmail,
+  getDropdownValue,
   checkContactUsForm
 }

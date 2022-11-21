@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { checkContactUsForm, formatPhone } from './formValidation.js'
-import './styles.css'
+import React, {useState} from 'react';
+import { checkContactUsForm, formatPhone, getDropdownValue } from './formValidation.js'
 
 const ContactUs = ({showContactUs, onClose}) => {
   const [name, setName] = useState('')
@@ -15,9 +14,13 @@ const ContactUs = ({showContactUs, onClose}) => {
         name: name,
         phone: phone,
         email: email,
+        time: getDropdownValue(),
         comment: message
       }
       console.log('Contact Info: ', contactInfo)
+      setPhone('')
+      setMessage('')
+      onClose()
     }
   }
   const handlePhoneInput = (e) => {
@@ -38,28 +41,31 @@ const ContactUs = ({showContactUs, onClose}) => {
         <div className='modal-body' >
           <div className='modal-segment'>
             <label htmlFor='your-full-name'>Your Full Name</label><br/>
-            <input id='your-full-name' type='text' placeholder='Ex. John Doe' onChange={(e) => setName(e.target.value)} />
+            <input id='your-full-name' type='text' placeholder='Ex. John Doe' onChange={(e)=>setName(e.target.value)} />
           </div>
+
           <div className='modal-segment'>
             <label htmlFor='your-phone'>Your Phone Number</label><br/>
-            <input type='text' id='your-phone' placeholder='Ex. 1234567890' onChange={(e) => handlePhoneInput(e.target.value)} value={phone} />
+            <input type='text' id='your-phone' placeholder='Ex. 1234567890' onChange={(e)=>handlePhoneInput(e.target.value)} value={phone} />
           </div>
+
           <div className='modal-segment'>
             <label htmlFor='your-email'>Your Email</label><br/>
-            <input type='text' id='your-email' placeholder='Ex. johndoe@gmail.com' onChange={(e) => setEmail(e.target.value)}/> <br/>
+            <input type='text' id='your-email' placeholder='Ex. johndoe@gmail.com' onChange={(e)=>setEmail(e.target.value)} /><br/>
           </div>
+
           <div className='modal-segment'>
-            <div>Choose a preferred time to be contacted</div>
-            <input type='radio' id='morning'/>
-            <label htmlFor='morning'>Morning</label>
-            <input type='radio' id='afternoon'/>
-            <label htmlFor='afternoon'>Afternoon</label>
-            <input type='radio' id='evening'/>
-            <label htmlFor='afternoon'>Evening</label>
+            <label htmlFor='your-preferred-time'>Choose a preferred time to be contacted</label><br/>
+            <select id='your-preferred-time' >
+              <option value='Morning'>Morning</option>
+              <option value='Afternoon'>Afternoon</option>
+              <option value='Evening'>Evening</option>
+            </select>
           </div> <br/>
+
           <div className='modal-segment'>
             <div htmlFor='your-message'>Your Comment/Question</div>
-            <textarea id='your-message' rows='5' cols='200' placeholder='Message' onChange={(e) => setMessage(e.target.value)} value={message}/>
+            <textarea id='your-message' rows='5' cols='200' placeholder='Message' onChange={(e)=>setMessage(e.target.value)} value={message}/>
           </div>
         </div>
         {/* Modal Footer */}

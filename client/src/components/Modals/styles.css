@@ -91,6 +91,12 @@ body {
   height: 30px;
   width: 75%;
   font-size: 18px;
+  color: darkslategrey;
+}
+#your-preferred-time {
+  width: 5rem;
+  height: 25px;
+  background-color: #AACD4F;
 }
 #your-message {
   width: 90%;
