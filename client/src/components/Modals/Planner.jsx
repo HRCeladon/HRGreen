@@ -2,10 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 const Planner = ({showPlanner, onClose}) => {
 
-  const error = {
-    fontSize: '18px',
-    color: 'red'
-  };
   const modalBody = {
     padding: '10px',
     fontSize: '18px',

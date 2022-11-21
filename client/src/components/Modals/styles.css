@@ -1,3 +1,6 @@
+body {
+  background: #D6E880;
+}
 
 .modal {
   position: fixed;
@@ -5,7 +8,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -25,7 +28,7 @@
 }
 .modal-content {
   border-radius: 1rem;
-  background-color: #C4A484;
+  background-color: #F0EAD2;
   height: fit-content;
   width: 75%;
   border-radius: 1rem;

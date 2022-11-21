@@ -1,39 +1,29 @@
 import React, {useState, useEffect} from 'react';
+import { checkContactUsForm } from './formValidation.js'
 import './styles.css'
 
 const ContactUs = ({showContactUs, onClose}) => {
-
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
-  const [comment, setComment] = useState('')
+  const [message, setMessage] = useState('')
 
-  const onContactSubmit = () => {
-    const contactInfo = {
-      name: name,
-      phone: phone,
-      email: email,
-      comment: comment
+  const onContactUsSubmit = () => {
+    let isValid = checkContactUsForm(name, phone, email, message)
+    if (isValid) {
+      const contactInfo = {
+        name: name,
+        phone: phone,
+        email: email,
+        comment: message
+      }
+      console.log('Contact Info: ', contactInfo)
     }
-    console.log('Contact Info: ', contactInfo)
-  }
-  const formatPhone = (value) => {
-    if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, '');
-    const len = phoneNumber.length;
-    if (len < 4) return phoneNumber;
-    if (len < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`
   }
   const handlePhoneInput = (e) => {
     const formattedPhoneNumber = formatPhone(e)
     setPhone(formattedPhoneNumber)
   }
-  // Helper function to verify email address
-  const verifyEmail = (email) => {
-    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return email.match(regex);
-  };
 
     const nicknameStyle = {
       display: 'inline-block',
@@ -83,7 +73,7 @@ const ContactUs = ({showContactUs, onClose}) => {
             <input type='text' id='phone' style={{marginTop: '5px', height: '20px'}} onChange={(e) => handlePhoneInput(e.target.value)} value={phone} style={nicknameStyle}/>
           </div>
           <div className='modal-segment'>
-            <label htmlFor='your-email'>Your Email<span className="accent-star">*</span></label><br/>
+            <label htmlFor='your-email'>Your Email</label><br/>
             <input style={{marginTop: '5px'}} type='text' id='your-email' placeholder='Example: johndoe@gmail.com' onChange={(e) => setEmail(e.target.value)} style={emailStyle}/> <br/>
           </div>
           <div className='modal-segment'>
@@ -97,12 +87,12 @@ const ContactUs = ({showContactUs, onClose}) => {
           </div>
           <div className='modal-segment'>
             <div htmlFor='your-question'>Comments/Question</div>
-            <textarea style={{marginTop: '5px'}} rows='5' cols='200' placeholder='Message' onChange={(e) => setComment(e.target.value)} style={questionStyle}/>
+            <textarea style={{marginTop: '5px'}} rows='5' cols='200' placeholder='Message' onChange={(e) => setMessage(e.target.value)} style={questionStyle} value={message}/>
           </div>
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
-          <button className='modal-button' onClick={onContactSubmit}>Submit</button>
+          <button className='modal-button' onClick={onContactUsSubmit}>Submit</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
       </div>
