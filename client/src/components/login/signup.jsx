@@ -50,7 +50,7 @@ export default function Signup () {
           <div className="modalFooter">
             <button onClick={createAccount}>Sign Up</button><br/>
             OR
-            <br/><button>Log In</button>
+            <br/><button>Exisiting User</button>
           </div>
         </div>
       </div>
