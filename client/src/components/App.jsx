@@ -5,7 +5,7 @@ import { useLocation, useParams, useSearchParams, BrowserRouter as Router, Route
 
 import Testimonials from './Testimonials/Testimonials.jsx'
 import HomePage from './HomePage/HomePage.jsx'
-import NavBar from './NavBar/Nav.jsx'
+
 
 const images = [
   'https://images.pexels.com/photos/1080401/pexels-photo-1080401.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -28,7 +28,6 @@ const renderView = () => {
 
   return (
       <main>
-        <NavBar />
         {renderView()}
       </main>
   )
