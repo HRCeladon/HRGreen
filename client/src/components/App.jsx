@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useLocation, useParams, useSearchParams, BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Testimonials from './Testimonials/Testimonials.jsx'
-import ImageCarousel from './carousel/ImageCarousel.jsx'
+import HomePage from './HomePage/HomePage.jsx'
+import NavBar from './NavBar/Nav.jsx'
 
 const images = [
   'https://images.pexels.com/photos/1080401/pexels-photo-1080401.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -14,22 +15,21 @@ const images = [
   'https://images.pexels.com/photos/36767/tree-natur-nightsky-cloud.jpg?auto=compress&cs=tinysrgb&w=800'
 ]
 export default function App() {
+const [view, setView] = useState('Home')
+
+const renderView = () => {
+  switch (view) {
+    case "Home":
+      return (
+        <HomePage />
+      )
+  }
+}
 
   return (
-    <div>
-      <ImageCarousel data={images} />
-      <ul>
-
-        <li>
-          <Link to="/testimonials">Testimonials</Link>
-        </li>
-      </ul>
-
-      <hr />
-
-      <Routes>
-        <Route path="/testimonials" element={<Testimonials />} />
-      </Routes>
-    </div>
+      <main>
+        <NavBar />
+        {renderView()}
+      </main>
   )
 }
