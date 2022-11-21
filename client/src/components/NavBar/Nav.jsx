@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavBar = () => {
+const NavBar = ({toggleModal}) => {
 
   return (
     <div className="navBar">
@@ -10,9 +10,15 @@ const NavBar = () => {
       </div>
 
       <div className="loginbuttons-container">
-        <div className="button-nav">Login</div>
+        <div className="button-nav"
+          onClick={() => {
+            toggleModal('login')
+          }}>Login</div>
         <div className="seperator">{'|'}</div>
-        <div className="button-nav">Sign Up</div>
+        <div className="button-nav"
+          onClick={() => {
+            toggleModal('signup')
+          }}>Sign Up</div>
       </div>
     </div>
   )
