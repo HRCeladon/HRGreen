@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-
+import ImageCarousel from '../carousel/ImageCarousel.jsx'
 const API_KEY = 'AIzaSyD2reYJIpHI2mXmu3cl4qQ42Ve4DQDd1DU';
 const {useState, useRef, useEffect} = React;
 
@@ -35,8 +35,9 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="carousel">
-            </div>
+            {/* <div className="carousel">
+            </div> */}
+            <ImageCarousel />
           </div>
 
           <div className="map">

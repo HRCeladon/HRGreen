@@ -132,6 +132,7 @@ body {
 .statement-container {
   display: flex;
   flex-direction: column;
+  /* flex-direction: row; */
   gap: 10px;
 }
 
@@ -139,3 +140,8 @@ body {
   font-size: 40px;
   font-weight: 900;
 }
+
+/* .intro {
+  display: flex;
+    flex-direction: row;
+} */
