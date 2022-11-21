@@ -20,14 +20,19 @@
   position: relative;
 }
 
-div.modalContent h2 {
+div.modalContent {
   margin: 10px;
 }
 
 div.modalContent input {
   margin: 10px 0;
   border: none;
+  width: 100%;
+}
 
+div.modalContent input.checkbox {
+  width: min-content;
+  margin-right: 5px;
 }
 
 div.modalContent img {
@@ -40,7 +45,6 @@ div.modalContent img {
 .form {
   margin: auto;
   background-color: #F0EAD2;
-  min-width: fit-content;
   width: 50%;
   padding: 20px;
   z-index: 1000;
@@ -48,7 +52,7 @@ div.modalContent img {
 }
 
 .modalBody {
-  width: min-content;
+  width: 100%;
   margin: auto;
   text-align: left;
 }
@@ -57,18 +61,28 @@ div.form button {
   background-color: #AACD4F;
   border: none;
   border-radius: 10px;
-  padding: 5px;
+  padding: 8px;
+  margin: 8px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
 }
 
 div.form button:hover {
   background-color: #D6E880;
 }
 
-.modalFooter {
-  text-align: center;
-  padding-top: 10px;
-}
-
 .modalFooter > * {
   margin: 5px;
+}
+
+div h3 {
+  margin-top: 0;
+}
+
+.warning {
+  color: red;
+}
+
+#pwdGuide {
+  margin: 0;
 }
