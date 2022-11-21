@@ -1,4 +1,4 @@
-require('dotenv').config();
+const Dotenv = require('dotenv-webpack');
 var path = require('path');
 
 module.exports = {
