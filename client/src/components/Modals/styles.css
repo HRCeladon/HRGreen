@@ -35,7 +35,7 @@ body {
   height: 40px;
   width: 10%;
 }
-.trip-planner-button {
+.trip-planner-button, .trip-entry-button {
   background-color: #AACD4F;
   border-radius: 1rem;
   height: 40px;
@@ -151,4 +151,17 @@ body {
   background-color: #f8f8f8;
   font-size: 18px;
   resize: none;
+}
+#image-preview {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  max-width: 50%;
+  overflow-y: auto;
+
+};
+.thumbnail {
+  max-width: 250px;
+  min-width: 150px;
+  height: 150px;
 }

@@ -95,12 +95,51 @@ const checkTripPlannerForm = (from, to, start, end) => {
   }
   return valid;
 }
+  // Helper function to handle image uploads and preview them
+  const readImages = (e, cb) => {
+    let errors = document.getElementsByClassName('error')[0];
+    if (errors.firstChild) {
+      errors.removeChild(errors.firstChild);
+    }
+    cb([]);
+    let newImages = [];
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+      const files = e.target.files;
+      const output = document.querySelector('#image-preview');
+      output.innerHTML = '';
+      if (files.length < 6) {
+        for (let i = 0; i < files.length; i++) {
+          if (!files[i].type.match('image')) {
+            continue;
+          }
+          const picReader = new FileReader();
+          picReader.addEventListener('load', function (event) {
+            const picFile = event.target;
+            const div = document.createElement('div');
+            div.innerHTML = `<img class='thumbnail' src='${picFile.result}' title='${picFile.name}'/>`;
+            output.appendChild(div);
+            newImages.push(files[i]);
+          });
+          picReader.readAsDataURL(files[i]);
+        }
+        cb(newImages);
+      } else {
+        let error = createErrorMsg('Cannot add more than 5 images');
+        document.getElementsByClassName('error')[0].appendChild(error);
+        e.target.value = null;
+      }
+    }
+  }
+
+  let tripDetails = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 
 export {
   formatPhone,
   verifyEmail,
   getDropdownValue,
   formatTravelers,
+  readImages,
+  tripDetails,
   checkContactUsForm,
   checkTripPlannerForm
 }
