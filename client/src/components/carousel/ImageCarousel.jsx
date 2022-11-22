@@ -13,7 +13,6 @@ const InnerContainer = styled.div` //Nested inside the container
 /* border: 1px solid red; */
 scroll-behavior: smooth;
 display: flex;
-overflow: scroll;
 `;
 
 const Data = styled.img`
