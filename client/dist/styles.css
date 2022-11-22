@@ -28,7 +28,7 @@ body {
   background-color: var(--light-color);
   width: 50%;
   height: fit-content;
-  filter: drop-shadow(1px 1px 6px rgba(0,0,0,0.25));
+  filter: drop-shadow(1px 1px 6px rgba(0, 0, 0, 0.25));
   padding: 20px 30px 20px 30px;
   margin-top: 65px;
 }
@@ -138,4 +138,9 @@ body {
 .extra-bold {
   font-size: 40px;
   font-weight: 900;
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
 }

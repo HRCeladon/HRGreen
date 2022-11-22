@@ -3,7 +3,7 @@ import Login from "../login/login.jsx"
 import SignUp from "../login/signup.jsx"
 import NavBar from '../NavBar/Nav.jsx'
 import Maps from "../Maps/Maps.jsx"
-
+import ImageCarousel from '../carousel/ImageCarousel.jsx'
 const API_KEY = 'AIzaSyD2reYJIpHI2mXmu3cl4qQ42Ve4DQDd1DU';
 const {useState, useRef, useEffect} = React;
 
@@ -47,8 +47,9 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div className="carousel">
-              </div>
+              {/* <div className="carousel">
+              </div> */}
+              <ImageCarousel />
             </div>
 
             <div className="map">
