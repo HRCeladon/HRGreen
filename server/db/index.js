@@ -9,7 +9,9 @@ let userSchema = mongoose.Schema({
   password: String, // hashed password
   firstName: String,
   lastName: String,
-  employee: Boolean
+  employee: {type: Boolean, default: false},
+  trees: Array,
+  trips: Array
 })
 
 const Users = mongoose.model('Users', userSchema);
