@@ -156,10 +156,9 @@ body {
   display: flex;
   gap: 10px;
   padding: 10px 0;
-  max-width: 50%;
+  max-width: 60%;
   overflow-y: auto;
-
-};
+}
 .thumbnail {
   max-width: 250px;
   min-width: 150px;

@@ -1,20 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { readImages, tripDetails } from './formValidation.js'
 import Maps from '../Maps/Maps.jsx'
-const API_KEY = 'AIzaSyD2reYJIpHI2mXmu3cl4qQ42Ve4DQDd1DU'
 
-const TripView = ({ showTrip, onClose }) => {
-  const ref = useRef(null);
-  const [map, setMap] = useState();
-  useEffect(() => {
-    if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
-    }
-  }, [ref, map]);
-
+const TripView = ({ showTrip, onClose, tripNumber, from, to, start, end, tripStatus }) => {
   const [images, setImages] = useState([])
-  let [tripNumber, from, to, date, tripStatus] = [1, 'Texas', 'Florida', '12/23/2022', false]
-
+  tripNumber = tripNumber || 1
+  from = from || 'Texas'
+  to = to || 'Florida'
+  start = start || '2022-12-23'
+  end = end || '2023-1-04'
+  tripStatus = tripStatus || false
 
   return (showTrip && (
     <div className='modal' onClick={onClose}>
@@ -27,8 +22,7 @@ const TripView = ({ showTrip, onClose }) => {
         {/* Modal Body */}
         <div className='modal-body' >
           {/* Trip Map */}
-          <div className='modal-segment'>
-            <div >From {from} to {to} on {date}</div>
+          <div className='map'>
             <Maps />
           </div>
           {/* Trip Description */}
