@@ -53,6 +53,9 @@ var count = 0;
 export default function Testimonial (props) {
 
 
+
+
+
   const slideLeft = () => {
     var sliding = document.getElementById('sliding');
     sliding.scrollLeft = sliding.scrollLeft - 500;
@@ -62,8 +65,15 @@ export default function Testimonial (props) {
     sliding.scrollLeft = sliding.scrollLeft + 500;
   }
 
+  var showImages = (photosGiven, count) => {
+    props.setGallery(photosGiven);
+    props.setPhotos(photosGiven);
+    props.setImageCount(count);
+  }
+
   return (
     <div>
+
       <div className="testimonialContainer">
         <MdChevronLeft className='ArrowCard' onClick={slideLeft} size={40} />
         <div id="sliding">
@@ -78,6 +88,7 @@ export default function Testimonial (props) {
             slideRight={slideRight}
             slideLeft={slideLeft}
             IdName={'slidingPhotos' + count}
+            showImages={showImages}
             />
           })}
         </div>

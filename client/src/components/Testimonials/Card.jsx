@@ -8,7 +8,8 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 
 
-export default function Card ({name,media,testimonial,trip, IdName}) {
+export default function Card ({name,media,testimonial,trip, IdName, showImages}) {
+  var count = 0;
   const slideRight = () => {
     var sliding = document.getElementById(IdName);
     sliding.scrollLeft = sliding.scrollLeft + 150;
@@ -18,7 +19,15 @@ export default function Card ({name,media,testimonial,trip, IdName}) {
     var sliding = document.getElementById(IdName);
     sliding.scrollLeft = sliding.scrollLeft - 150;
   }
+  const buttonClick = (e) => {
+    e.preventDefault();
+    var count =  e.target.name
+    showImages(media, count);
+  }
 
+  var keepTrack = () => {
+
+  }
   return (
     <div>
 
@@ -37,10 +46,13 @@ export default function Card ({name,media,testimonial,trip, IdName}) {
           <div id={IdName} className="slidingPhotos">
 
             {media.map((testimonial) => {
+              count++
               return <img
                 className="carouselImage"
                 key={Math.random()}
                 src={testimonial}
+                onClick={buttonClick}
+                name={count - 1}
               />
             })}
 
