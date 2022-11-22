@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { } from './formValidation.js'
+import { checkTripPlannerForm, formatTravelers } from './formValidation.js'
 
 const Planner = ({showPlanner, onClose}) => {
   const [from, setFrom] = useState('')
@@ -8,18 +8,31 @@ const Planner = ({showPlanner, onClose}) => {
   const [endDate, setEndDate] = useState('')
   const [description, setDescription] = useState('')
   const [travelers, setTravelers] = useState('')
-
-  const onPlannerSubmit = () => {
-    const tripInfo = {
-      from: from,
-      to: to,
-      startDate: startDate,
-      endDate: endDate,
-      travelers: travelers
-    }
-    console.log('Trip Info:', tripInfo)
+  const clearFields = () => {
+    setFrom('')
+    setTo('')
+    setStartDate('')
+    setEndDate('')
+    setDescription('')
+    setTravelers('')
   }
 
+  const onPlannerSubmit = () => {
+    let isValid = checkTripPlannerForm(from, to, startDate, endDate)
+    if (isValid) {
+      const tripInfo = {
+        from: from,
+        to: to,
+        startDate: startDate,
+        endDate: endDate,
+        travelers: formatTravelers(travelers),
+        tripCompleted: false
+      }
+      console.log('Trip Info:', tripInfo)
+      clearFields()
+      onClose()
+    }
+  }
 
   return (showPlanner && (
     <div className='modal' onClick={onClose}>
@@ -52,7 +65,7 @@ const Planner = ({showPlanner, onClose}) => {
 
             <div className='modal-segment'>
               <label htmlFor='end-date'>End Date</label><br/>
-              <input type='text' id='end-date' placeholder='Start' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
+              <input type='text' id='end-date' placeholder='End' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
             </div>
           </div>
 

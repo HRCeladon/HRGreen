@@ -1,4 +1,3 @@
-
 // Helper function to format phone to (XXX) XXX-XXXX when the user types it in
 const formatPhone = (value) => {
   if (!value) return value;
@@ -17,6 +16,11 @@ const verifyEmail = (email) => {
 const getDropdownValue = () => {
   let dropdown = document.getElementById('your-preferred-time')
   return dropdown.value;
+}
+// Helper function to split the traverls string to an array
+const formatTravelers = (string) => {
+  string = string.trim()
+  return string.split('\n')
 }
 // Helper function to create a span element that shows the error message on submission
 const createErrorMsg = (message) => {
@@ -60,9 +64,43 @@ const checkContactUsForm = (name, phone, email, message) => {
   return valid;
 }
 
+const checkTripPlannerForm = (from, to, start, end) => {
+  // Flags for checking if input is correct
+  let valid = true;
+  // Remove any error messsage that appeared from previous submission
+  let errors = document.getElementsByClassName('error')[0];
+  while (errors.firstChild) {
+    errors.removeChild(errors.firstChild);
+  }
+  // Check input fields
+  if (from === '') { // From field
+    valid = false;
+    let error = createErrorMsg('From location cannot be blank');
+    document.getElementsByClassName('error')[0].appendChild(error);
+  }
+  if (to === '') { // To field
+    valid = false;
+    let error = createErrorMsg('To location cannot be blank');
+    document.getElementsByClassName('error')[0].appendChild(error);
+  }
+  if (start === '') { // Start field
+    valid = false;
+    let error = createErrorMsg('Start date cannot be blank');
+    document.getElementsByClassName('error')[0].appendChild(error);
+  }
+  if (end === '') { // End field
+    valid = false;
+    let error = createErrorMsg('End date cannot be blank');
+    document.getElementsByClassName('error')[0].appendChild(error);
+  }
+  return valid;
+}
+
 export {
   formatPhone,
   verifyEmail,
   getDropdownValue,
-  checkContactUsForm
+  formatTravelers,
+  checkContactUsForm,
+  checkTripPlannerForm
 }
