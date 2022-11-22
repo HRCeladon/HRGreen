@@ -1,16 +1,29 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import axios from 'axios';
-import { useLocation, useParams, useSearchParams } from 'react-router-dom';
-import {ContactUsButton, PlannerButton} from './Modals/index.js'
+import { useLocation, useParams, useSearchParams, BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import Testimonials from './Testimonials/Testimonials.jsx'
+import HomePage from './HomePage/HomePage.jsx'
+
+
+
 
 export default function App() {
+const [view, setView] = useState('Home')
 
-  return(
-    <>
-        <div>Hello World!</div>
-        <PlannerButton />
-        <ContactUsButton />
-    </>
+const renderView = () => {
+  switch (view) {
+    case "Home":
+      return (
+        <HomePage />
+      )
+  }
+}
+
+  return (
+      <main>
+        {renderView()}
+      </main>
   )
 }
