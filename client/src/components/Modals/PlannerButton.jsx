@@ -6,7 +6,7 @@ const PlannerButton = () => {
 
   return (
     <>
-      <button className='trip-planner-button' onClick={() => setPlanner(true)}>Plan New Trip</button>
+      {!showPlanner && (<button className='trip-planner-button' onClick={() => setPlanner(true)}>Plan New Trip</button>)}
       <Planner className='trip-planner-form' showPlanner={showPlanner} onClose={() => setPlanner(false)}/>
     </>
   )

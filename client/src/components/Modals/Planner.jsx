@@ -1,86 +1,72 @@
 import React, {useState, useEffect} from 'react';
+import { } from './formValidation.js'
 
 const Planner = ({showPlanner, onClose}) => {
+  const [from, setFrom] = useState('')
+  const [to, setTo] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [description, setDescription] = useState('')
+  const [travelers, setTravelers] = useState('')
 
-  const modalBody = {
-    padding: '10px',
-    fontSize: '18px',
-    borderTop: '1px solid #eee',
-    borderBottom: '1px solid #eee',
-    margin: '0 0 0 2rem'
-  };
-  const nicknameStyle = {
-    display: 'inline-block',
-    textAlign: 'left',
-    margin: '0 0 20px 0',
-    height: '20px',
-    width: '50%',
-    fontSize: '14px'
-  };
-  const emailStyle = {
-    display: 'inline-block',
-    textAlign: 'left',
-    margin: '0 0 5px 0',
-    height: '20px',
-    width: '50%',
-    fontSize: '14px'
-  };
-  const questionStyle = {
-    width: '90%',
-    height: '100px',
-    fontSize: '24px',
-    boxSizing: 'border-box',
-    borderRadius: '5px',
-    backgroundColor: '#f8f8f8',
-    fontSize: '18px',
-    resize: 'none'
-  };
+  const onPlannerSubmit = () => {
+    const tripInfo = {
+      from: from,
+      to: to,
+      startDate: startDate,
+      endDate: endDate,
+      travelers: travelers
+    }
+    console.log('Trip Info:', tripInfo)
+  }
+
 
   return (showPlanner && (
     <div className='modal' onClick={onClose}>
       <div className='modal-content' onClick={(e) => e.stopPropagation()}>
         {/* Modal Header */}
         <div className='modal-header'>
-          <div>Contact Us</div>
-          <div className='product'>We'll get back to you soon!</div>
-          <div className='accent-underline'></div>
-          <div className='error' style={error}></div>
+          <div>Plan a new trip</div>
+          <div>Enter trip details below</div>
+          <div className='error'></div>
         </div>
         {/* Modal Body */}
-        <div className='modal-body' style={modalBody}>
-          <div className='modal-segment'>
-            <label htmlFor='first-name'>First Name</label><br/>
-            <input id='first-name' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='Example: John' onChange={(e) => setFirst(e.target.value)} style={nicknameStyle}/>
+        <div className='modal-body' >
+          <div className='from-to'>
+            <div className='modal-segment'>
+              <label htmlFor='from'>From</label><br/>
+              <input id='from' type='text' placeholder='Ex. Texas' onChange={(e)=>setFrom(e.target.value)} value={from}/>
+            </div>
+
+            <div className='modal-segment'>
+              <label htmlFor='to'>To</label><br/>
+              <input type='text' id='to' placeholder='Ex. Florida' onChange={(e)=>setTo(e.target.value)} value={to} />
+            </div>
           </div>
-          <div className='modal-segment'>
-            <label htmlFor='last-name'>Last Name</label><br/>
-            <input id='last-name' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='Example: Doe' onChange={(e) => setLast(e.target.value)} style={nicknameStyle}/>
+
+          <div className='start-end'>
+            <div className='modal-segment'>
+              <label htmlFor='start-date'>Start Date</label><br/>
+              <input type='text' id='start-date' placeholder='Start' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
+            </div>
+
+            <div className='modal-segment'>
+              <label htmlFor='end-date'>End Date</label><br/>
+              <input type='text' id='end-date' placeholder='Start' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
+            </div>
           </div>
-          <div className='modal-segment'>
-            <label htmlFor='phone'>Phone Number</label><br/>
-            <input id='preferred-time' style={{marginTop: '5px', height: '20px'}} type='text' placeholder='123-456-7890' onChange={(e) => setLast(e.target.value)} style={nicknameStyle}/>
-          </div>
-          <div className='modal-segment'>
-            <label htmlFor='your-email'>Your Email<span className="accent-star">*</span></label><br/>
-            <input style={{marginTop: '5px'}} type='text' id='your-email' placeholder='Example: johndoe@gmail.com' onChange={(e) => setEmail(e.target.value)} style={emailStyle}/> <br/>
-          </div>
-          <div className='modal-segment'>
-            <p>Choose a preferred time to be contacted</p>
-            <input type='radio' id='morning'/>
-            <label htmlFor='morning'>Morning</label>
-            <input type='radio' id='afternoon'/>
-            <label htmlFor='afternoon'>Afternoon</label>
-            <input type='radio' id='evening'/>
-            <label htmlFor='afternoon'>Evening</label>
-          </div>
-          <div className='modal-segment'>
-            <div htmlFor='your-question'>Your question or comment</div>
-            <textarea style={{marginTop: '5px'}} rows='5' cols='200' placeholder='Enter your question or comment here' onChange={(e) => setAsk(e.target.value)} style={questionStyle}/>
+
+          <div className='description-and-travelers'>
+            <div htmlFor='description-input'>Trip Description</div>
+            <textarea id='description-input' rows='5' cols='200' placeholder='Trip Description' onChange={(e)=>setDescription(e.target.value)} value={description}/>
+
+            <div htmlFor='travelers-input'>Additional Travelers</div>
+            <textarea id='travelers-input' rows='5' cols='200' placeholder='John Doe&#10;John Smith&#10;Jane Doe' onChange={(e)=>setTravelers(e.target.value)} value={travelers}/>
           </div>
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
-          <button className='modal-button' >Submit</button>
+          <button className='modal-button' onClick={onPlannerSubmit}>Save Trip</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
       </div>
