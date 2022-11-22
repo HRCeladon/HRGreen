@@ -17,6 +17,10 @@ const images = [
 export default function App() {
 const [view, setView] = useState('Home')
 
+const changeView = (view) => {
+  setView(view);
+}
+
 const renderView = () => {
   switch (view) {
     case "Home":
