@@ -1,3 +1,102 @@
 h1 {
   font-family: "Lucida Console", "Courier New", monospace;
 }
+
+
+.testimonialContainer {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+}
+
+#sliding {
+  overflow-x: hidden;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, 320px); */
+  justify-content: flex-start;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  scroll-behavior: smooth;
+}
+
+.cardContainer {
+  display: inline-block;
+  padding: 0.5rem;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 280px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 20px;
+  height: 300px;
+  overflow: hidden;
+  background-color: var(--background-secondary);
+  border-radius: 20px;
+}
+
+.nameContainer {
+  font-size: 20px;
+  margin: 20px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.tripContainer {
+  font-size: 11px;
+  margin: 20px;
+  margin-top: 3px;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+.ArrowCard {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.ArrowCard:hover {
+  opacity: 1;
+}
+
+.carouselImage {
+  height: 50px;
+  margin: 0px 10px 0px;
+  border-color:darkgreen;
+  border-width:1px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.slidingPhotos {
+  overflow-x: hidden;
+  justify-content: flex-start;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+.testimonialTextContainer {
+  height: 52%;
+
+  margin-left: 10.5px;
+}
+.cardContainer {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.bodyDiv {
+  width: 80%;
+  height: 105%;
+}

@@ -3,7 +3,7 @@ import Login from "../login/login.jsx"
 import SignUp from "../login/signup.jsx"
 import NavBar from '../NavBar/Nav.jsx'
 import Maps from "../Maps/Maps.jsx"
-
+import Testimonials from '../Testimonials/Testimonials.jsx';
 const API_KEY = 'AIzaSyD2reYJIpHI2mXmu3cl4qQ42Ve4DQDd1DU';
 const {useState, useRef, useEffect} = React;
 
@@ -56,6 +56,9 @@ const HomePage = () => {
             </div>
             <div className="stats-container">
               <div className="medium-heading">Stats</div>
+            </div>
+            <div className="testimonialDiv">
+              <Testimonials/>
             </div>
           </div>
         </div>
