@@ -21,6 +21,7 @@ width: 100%;
 height: 100%;
 transition: ease-in;
 `;
+
 const ButtonR = styled.div`
 position: absolute;
 font-size: 25px;

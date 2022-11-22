@@ -8,8 +8,9 @@ const NavBar = ({toggleModal}) => {
         <div className="LogoText">TravelGreen</div>
         <div className="logo"></div>
       </div>
-
       <div className="loginbuttons-container">
+      <div className="button-nav"
+          >Plan a Trip</div>
         <div className="button-nav"
           onClick={() => {
             toggleModal('login')
