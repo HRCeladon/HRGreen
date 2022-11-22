@@ -5,7 +5,7 @@ import { useLocation, useParams, useSearchParams, BrowserRouter as Router, Route
 
 import Testimonials from './Testimonials/Testimonials.jsx'
 import HomePage from './HomePage/HomePage.jsx'
-
+import { ContactUsButton, PlannerButton } from './Modals/index.js'
 
 
 

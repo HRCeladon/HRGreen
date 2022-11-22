@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { checkContactUsForm, formatPhone, getDropdownValue } from './formValidation.js'
 
 const ContactUs = ({showContactUs, onClose}) => {
@@ -15,7 +15,8 @@ const ContactUs = ({showContactUs, onClose}) => {
         phone: phone,
         email: email,
         time: getDropdownValue(),
-        comment: message
+        comment: message,
+        resolved: false
       }
       console.log('Contact Info: ', contactInfo)
       setPhone('')

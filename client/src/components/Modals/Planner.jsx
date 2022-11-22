@@ -26,7 +26,9 @@ const Planner = ({showPlanner, onClose}) => {
         startDate: startDate,
         endDate: endDate,
         travelers: formatTravelers(travelers),
-        tripCompleted: false
+        tripCompleted: false,
+        stars: 0,
+        reviews: []
       }
       console.log('Trip Info:', tripInfo)
       clearFields()
@@ -48,24 +50,24 @@ const Planner = ({showPlanner, onClose}) => {
           <div className='from-to'>
             <div className='modal-segment'>
               <label htmlFor='from'>From</label><br/>
-              <input id='from' type='text' placeholder='Ex. Texas' onChange={(e)=>setFrom(e.target.value)} value={from}/>
+              <input type='address' id='from' placeholder='Ex. Texas' onChange={(e)=>setFrom(e.target.value)} value={from}/>
             </div>
 
             <div className='modal-segment'>
               <label htmlFor='to'>To</label><br/>
-              <input type='text' id='to' placeholder='Ex. Florida' onChange={(e)=>setTo(e.target.value)} value={to} />
+              <input type='address' id='to' placeholder='Ex. Florida' onChange={(e)=>setTo(e.target.value)} value={to} />
             </div>
           </div>
 
           <div className='start-end'>
             <div className='modal-segment'>
               <label htmlFor='start-date'>Start Date</label><br/>
-              <input type='text' id='start-date' placeholder='Start' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
+              <input type='date' id='start-date' placeholder='Start' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
             </div>
 
             <div className='modal-segment'>
               <label htmlFor='end-date'>End Date</label><br/>
-              <input type='text' id='end-date' placeholder='End' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
+              <input type='date' id='end-date' placeholder='End' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
             </div>
           </div>
 
