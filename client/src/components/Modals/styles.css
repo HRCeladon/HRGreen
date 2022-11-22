@@ -1,0 +1,154 @@
+body {
+  background: #D6E880;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 10;
+  animation-name: slidein;
+  animation-duration: 0.5s;
+}
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    width: 100%;
+  }
+  to {
+    margin-bottom: 0%;
+    width: 100%;
+  }
+}
+.contact-us-buton {
+  position: sticky;
+  background-color: #AACD4F;
+  left: 100%;
+  top: 80%;
+  border-radius: 1rem 0 0 1rem;
+  height: 40px;
+  width: 10%;
+}
+.trip-planner-button {
+  background-color: #AACD4F;
+  border-radius: 1rem;
+  height: 40px;
+  width: 20%;
+  font-size: 20px;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+  gap: 10px;
+  border-radius: 1rem;
+  background-color: #F0EAD2;
+  height: fit-content;
+  width: 75%;
+  border-radius: 1rem;
+}
+.error {
+  font-size: 18px;
+  color: red
+}
+.modal-header {
+  height: fit-content;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.modal-body {
+  padding: 10px;
+  font-size: 18px;
+  border-top: 1px solid #648A34;
+  border-bottom: 1px solid #648A34;
+  margin: 0 2rem 0 2rem;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 2rem 0 2rem 0;
+}
+.modal-button {
+  background-color: #AACD4F;
+  border-radius: 1rem;
+  width: 25%;
+  color: darkslategrey;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+}
+.modal-segment {
+  margin: 0;
+}
+/* Input fields for contact us form */
+#your-full-name, #your-phone, #your-email  {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 10px 0;
+  height: 30px;
+  width: 75%;
+  font-size: 18px;
+  color: darkslategrey;
+}
+#your-preferred-time {
+  width: 5rem;
+  height: 25px;
+  background-color: #AACD4F;
+}
+#your-message {
+  width: 90%;
+  height: 100px;
+  margin: 5px 0 0 0;
+  font-size: 24px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  font-size: 18px;
+  resize: none;
+}
+/* Planner modal  */
+.from-to {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.start-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+/* Input fields for planner form */
+#from, #to, #start-date, #end-date {
+  display: inline-block;
+  text-align: left;
+  margin: 0 0 10px 0;
+  height: 30px;
+  width: 75%;
+  font-size: 18px;
+  color: darkslategrey;
+}
+.description-and-travelers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#description-input, #travelers-input {
+  width: 60%;
+  height: 100px;
+  margin: 5px 0 0 0;
+  font-size: 24px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  font-size: 18px;
+  resize: none;
+}
