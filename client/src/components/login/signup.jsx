@@ -45,19 +45,24 @@ export default function Signup ({ toggleModal }) {
         onClick={e => {
           e.stopPropagation();
         }}>
-        <h1>TravelGreen</h1>
+        <div className="logo-modal">
+          <div className="logo-container">
+            <div className="LogoText foot-text">TravelGreen</div>
+            <div className="logo foot-logo"></div>
+          </div>
+        </div>
         <img src={trees}/>
         <div className="form">
           <div className="modalBody">
             <h3>Sign Up</h3>
             <label>First Name</label><br/>
-            <input onChange={(e) => setInputFName(e.target.value)}/><br/>
+            <input className="input-login" onChange={(e) => setInputFName(e.target.value)}/><br/>
             <label>Last Name</label><br/>
-            <input onChange={(e) => setInputLName(e.target.value)}/><br/>
+            <input className="input-login" onChange={(e) => setInputLName(e.target.value)}/><br/>
             <label>Email</label><br/>
-            <input onChange={(e) => setInputEmail(e.target.value)}/><br/>
+            <input className="input-login" onChange={(e) => setInputEmail(e.target.value)}/><br/>
             <label>Password</label><br/>
-            <input id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
+            <input className="input-login" id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
             <ul id="pwdGuide">
               <li>At least 8 characters long</li>
               <li>At least one uppercase letter</li>
@@ -72,7 +77,7 @@ export default function Signup ({ toggleModal }) {
           </div>
           <div className="modalFooter">
             <button onClick={createAccount}>Sign Up</button><br/>
-            OR
+            <div>OR</div>
             <br/><button onClick={() => {
               toggleModal('login');
               toggleModal('signup');

@@ -11,8 +11,8 @@ import Employee from './employee/Employee.jsx'
 export default function App() {
 const [view, setView] = useState('Home')
 
-const changeView = (view) => {
-  setView(view);
+const changeView = (newView) => {
+  setView(newView);
 }
 
 const renderView = () => {
