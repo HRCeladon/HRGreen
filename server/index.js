@@ -43,6 +43,20 @@ app.post('/login', (req, res) => {
   }).catch((err) => console.log('ERROR HERE: ', err));
 })
 
+app.get('/trees', (req, res) => {
+  if (req.body.email) {
+    Users.find({_id: req.body.email}, {trees:1, _id:0}).then((data) => {
+      res.send(data)
+    })
+    .catch((err) => console.log('ERROR HERE: ', err));
+  } else {
+    Users.find({}, {trees:1, _id:0}).then((data) => {
+      res.send(data)
+    })
+    .catch((err) => console.log('ERROR HERE: ', err));
+  }
+})
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT);
