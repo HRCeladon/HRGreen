@@ -25,7 +25,7 @@ module.exports.previewImage = (image, name) => {
     tags: ["BlueOcean"]
   }
 
-  imagekit.upload(, (error, result) => {
+  imagekit.upload((error, result) => {
     if(error) callback(error, null);
     else callback(null, result);
   })
