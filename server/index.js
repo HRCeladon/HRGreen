@@ -32,7 +32,7 @@ app.post('/login', (req, res) => {
     if (data.length !== 0) {
       argon2.verify(data[0].password, req.body.pwd).then((check) => {
         if (check) {
-          res.send('Success');
+          res.send({email: data[0]._id, firstName: data[0].firstName, lastName: data[0].lastName, employee: data[0].employee, trees: data[0].trees, trips: data[0].trips});
         } else {
           res.send('Incorrect password. Please try again.');
         }
