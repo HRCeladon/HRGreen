@@ -71,6 +71,7 @@ body {
   border-top: 1px solid #648A34;
   border-bottom: 1px solid #648A34;
   margin: 0 2rem 0 2rem;
+  width: 85%;
 }
 .modal-footer {
   display: flex;

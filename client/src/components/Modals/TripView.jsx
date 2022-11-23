@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { readImages, tripDetails } from './formValidation.js'
+import { readImages, tripDetails, submitImage } from './formValidation.js'
 import Maps from '../Maps/Maps.jsx'
 
-const TripView = ({ showTrip, onClose, tripNumber, from, to, start, end, tripStatus }) => {
+const TripView = ({ showTrip, onClose, tripNumber }) => {
   const [images, setImages] = useState([])
-  tripNumber = tripNumber || 1
-  from = from || 'Texas'
-  to = to || 'Florida'
-  start = start || '2022-12-23'
-  end = end || '2023-1-04'
-  tripStatus = tripStatus || false
+  tripNumber = tripNumber || 1;
 
   return (showTrip && (
     <div className='modal' onClick={onClose}>
@@ -28,7 +23,13 @@ const TripView = ({ showTrip, onClose, tripNumber, from, to, start, end, tripSta
           {/* Trip Description */}
           <div className='modal-segment'>
             <div className='trip-details'>Trip Details</div>
-            <p>{tripDetails}</p>
+            <ul >
+              <li>From: {tripDetails.from}</li>
+              <li>To: {tripDetails.to}</li>
+              <li>Start Date: {tripDetails.startDate}</li>
+              <li>End Date: {tripDetails.endDate}</li>
+              <li>Travelers: {tripDetails.travelers.map(traveler => traveler)}</li>
+            </ul>
           </div>
           {/* Image upload */}
           <div className='modal-segment'>
@@ -36,11 +37,9 @@ const TripView = ({ showTrip, onClose, tripNumber, from, to, start, end, tripSta
             <input type='file' id='files' multiple='multiple' accept='image/png image/jepg image/jpg' onChange={(e) => readImages(e, setImages)} />
             <output id='image-preview' />
           </div>
-
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
-          <button className='modal-button' >Submit</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
       </div>

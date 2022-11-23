@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 // Helper function to format phone to (XXX) XXX-XXXX when the user types it in
 const formatPhone = (value) => {
   if (!value) return value;
@@ -122,6 +124,7 @@ const checkTripPlannerForm = (from, to, start, end) => {
           });
           picReader.readAsDataURL(files[i]);
         }
+        console.log('Images:', newImages)
         cb(newImages);
       } else {
         let error = createErrorMsg('Cannot add more than 5 images');
@@ -131,7 +134,44 @@ const checkTripPlannerForm = (from, to, start, end) => {
     }
   }
 
-  let tripDetails = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  const getBase64 = (file, cb) => {
+    let reader = new FileReader();
+    render.readAsDataURL(file);
+    render.onload = function () {
+      cb(reader.result)
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error)
+    };
+  }
+
+  const submitImage = (e, setImages) => {
+    e.preventDefault()
+    const submittedImages = []
+    let name = event.target.files[0].name
+    getBased64(event.target.files[0], (result) => {
+      var apiObject = {base64Img: result, nameGiven: name}
+      axios.post('./image', apiObject)
+        .then((apICallResult) => {
+          console.log(apiObjectResult)
+          submittedImages.push(apiCallResult.data.url)
+          setImages(submittedImages)
+          forceUdpate();
+        })
+        .catch(err => console.log('Failed to upload image:', err))
+    })
+  }
+
+  let tripDetails =  {
+    from: 'Houston, TX',
+    to: 'Orlando, FL',
+    startDate: '2022-11-16',
+    endDate: '2022-11-10',
+    travelers: ['John', 'Jane'],
+    tripCompleted: false,
+    stars: 0,
+    reviews: []
+  }
 
 export {
   formatPhone,
@@ -139,6 +179,7 @@ export {
   getDropdownValue,
   formatTravelers,
   readImages,
+  submitImage,
   tripDetails,
   checkContactUsForm,
   checkTripPlannerForm
