@@ -5,9 +5,10 @@ import NavBar from '../NavBar/Nav.jsx'
 import Maps from '../Maps/Maps.jsx'
 
 const EmployeePage = styled.div`
-  width: 99;
+  width: 105;
   display: flex;
   justify-content: center;
+  flex-grow:2;
   margin: 20px 0 0 0;
   padding: 20px;
 `;
@@ -22,17 +23,61 @@ const EmployeeContainer = styled.div`
 const MapStyle = styled.div`
 height: 400px;
 `
-
+const Admin = styled.div`
+margin-bottom: 10px;
+font-size: 20px;
+font-weight: bold;
+text-decoration: underline;
+`
+const data = [
+  {
+    name: 'Ricardo Vargas',
+    email: 'Richi@gmail.com',
+    location: 'Sacramento California',
+    status: false
+  },
+  {
+    name: 'Ricardo Vargas',
+    email: 'Ricardo@gmail.com',
+    location: 'Sacramento California',
+    status: false
+  },
+  {
+    name: 'Ricardo Vargas',
+    email: 'Ricardo.Vargas2424@gmail.com',
+    location: 'Sacramento California',
+    status: true
+  },
+  {
+    name: 'Ricardo Vargas',
+    email: 'Ricardo.Vargas2424@gmail.com',
+    location: 'Sacramento California',
+    status: true
+  },
+  {
+    name: 'Ricardo Vargas',
+    email: 'Ricardo.Vargas2424@gmail.com',
+    location: 'Sacramento California',
+    status: false
+  },
+  {
+    name: 'Ricardo Vargas',
+    email: 'Ricardo.Vargas2424@gmail.com',
+    location: 'Sacramento California',
+    status: true
+  }
+]
 const Employee = () => {
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <EmployeePage>
         <EmployeeContainer>
+          <Admin>ADMIN</Admin>
           <MapStyle>
             <Maps />
           </MapStyle>
-          <ClientData />
+          <ClientData data={data} />
         </EmployeeContainer>
       </EmployeePage>
     </>
