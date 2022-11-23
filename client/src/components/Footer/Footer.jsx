@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactUsButton from '../Modals/ContactUsButton.jsx'
 
 const Footer = () => {
 
@@ -12,7 +13,7 @@ const Footer = () => {
           <div className="icon linkedIn"></div>
         </div>
         <div className="footer">
-          <div className="button-nav footer-button">Contact Us</div>
+          <ContactUsButton />
         </div>
         <div className="logo-container">
           <div className="LogoText foot-text">TravelGreen</div>

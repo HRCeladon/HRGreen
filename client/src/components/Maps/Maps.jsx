@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useJsApiLoader, GoogleMap, Marker, MarkerClusterer } from '@react-google-maps/api';
 import treeOne from '../../../dist/assets/trees-01.png';
 import treeTwo from '../../../dist/assets/trees-02.png';
@@ -8,17 +9,6 @@ import treeThree from '../../../dist/assets/trees-03.png';
 
 const center = { lat: 39, lng: -95 };
 
-const markers = [
-  { lat: 39, lng: -95},
-  { lat: 39.1, lng: -95},
-  { lat: 39.2, lng: -95},
-  { lat: 39.3, lng: -95},
-  { lat: 39.4, lng: -95},
-  { lat: 39, lng: -95.1},
-  { lat: 29, lng: -98},
-  { lat: 47, lng: -122}
-]
-
 const options = {
   zoomOnClick: true,
 
@@ -26,9 +16,30 @@ const options = {
 
 const Maps = (props) => {
   const [map, setMap] = React.useState(/** @type google.maps.Map */ (null));
+  const [markers, setMarkers] = React.useState([]);
   const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY
   });
+
+  const getMarkers = () => {
+    if (props.email) {
+      axios.get('/trees', {email: props.email})
+      .then ((results) => {
+        setMarkers(results.data[0].trees);
+      })
+      .catch(err => console.log('Error: ', err));
+    } else {
+      axios.get('/trees')
+      .then((results) => {
+        setMarkers(results.data[0].trees);
+      })
+      .catch(err => console.log('Error: ', err));
+    }
+  }
+
+  React.useEffect(() => {
+    getMarkers()
+  }, [])
 
   if (!isLoaded) {
     return <div>Loading...</div>

@@ -32,7 +32,7 @@ app.post('/login', (req, res) => {
     if (data.length !== 0) {
       argon2.verify(data[0].password, req.body.pwd).then((check) => {
         if (check) {
-          res.send('Success');
+          res.send({email: data[0]._id, firstName: data[0].firstName, lastName: data[0].lastName, employee: data[0].employee, trees: data[0].trees, trips: data[0].trips});
         } else {
           res.send('Incorrect password. Please try again.');
         }
@@ -41,6 +41,32 @@ app.post('/login', (req, res) => {
       res.send(`User with ${req.body.email} does not exist. Please create an account or try again.`);
     }
   }).catch((err) => console.log('ERROR HERE: ', err));
+})
+
+app.post('/images', (req,res) => {
+
+  previewImage(req.body, (error, result) => {
+    if(error) {
+      console.log(error);
+      res.send('failed to upload')
+    }
+
+    res.send(result)
+  })
+})
+
+app.get('/trees', (req, res) => {
+  if (req.body.email) {
+    Users.find({_id: req.body.email}, {trees:1, _id:0}).then((data) => {
+      res.send(data)
+    })
+    .catch((err) => console.log('ERROR HERE: ', err));
+  } else {
+    Users.find({}, {trees:1, _id:0}).then((data) => {
+      res.send(data)
+    })
+    .catch((err) => console.log('ERROR HERE: ', err));
+  }
 })
 
 const PORT = process.env.PORT || 3001;

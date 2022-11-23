@@ -14,8 +14,8 @@ export default function Login ({ toggleModal }) {
     var emailCheck = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
     if (emailCheck.test(inputEmail) && inputPassword !== '') {
       axios.post('/login', {email: inputEmail, pwd: inputPassword}).then((data) => {
-        if (data.data.indexOf('does not exist') === -1 && data.data !== 'Incorrect password. Please try again.') {
-          console.log('Success!');
+        if (typeof data.data === 'object' && data.data !== 'Incorrect password. Please try again.') {
+          console.log(data.data);
           toggleModal('login');
         } else if (data.data === 'Incorrect password. Please try again.') {
           setWarning('wrong password');
