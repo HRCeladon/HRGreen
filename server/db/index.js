@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const loadData = require('./dataLoader.js');
 
 const mongoURI = 'mongodb://localhost:27017/trees';
 
