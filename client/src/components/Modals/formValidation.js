@@ -136,8 +136,8 @@ const checkTripPlannerForm = (from, to, start, end) => {
 
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
-    render.readAsDataURL(file);
-    render.onload = function () {
+    reader.readAsDataURL(file);
+    reader.onload = function () {
       cb(reader.result)
     };
     reader.onerror = function (error) {
@@ -149,9 +149,9 @@ const checkTripPlannerForm = (from, to, start, end) => {
     e.preventDefault()
     const submittedImages = []
     let name = event.target.files[0].name
-    getBased64(event.target.files[0], (result) => {
+    getBase64(event.target.files[0], (result) => {
       var apiObject = {base64Img: result, nameGiven: name}
-      axios.post('./image', apiObject)
+      axios.post('./images', apiObject)
         .then((apICallResult) => {
           console.log(apiObjectResult)
           submittedImages.push(apiCallResult.data.url)

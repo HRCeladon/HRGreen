@@ -34,7 +34,7 @@ const TripView = ({ showTrip, onClose, tripNumber }) => {
           {/* Image upload */}
           <div className='modal-segment'>
             <label id='files' htmlFor='files' >Upload Your Photos!</label> <br/>
-            <input type='file' id='files' multiple='multiple' accept='image/png image/jepg image/jpg' onChange={(e) => readImages(e, setImages)} />
+            <input type='file' id='files' multiple='multiple' accept='image/png image/jepg image/jpg' onChange={(e) => submitImage(e, setImages)} />
             <output id='image-preview' />
           </div>
         </div>

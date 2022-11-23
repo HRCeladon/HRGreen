@@ -1,16 +1,14 @@
 var ImageKit = require("imagekit");
 
 
+module.exports.previewImage = (image, callback) => {
+  console.log(`Image:${image} Callback:${callback}`)
+  console.log(`publ ${process.env.publicKey} Priv ${process.env.privateKey} url ${process.env.urlEndpoint}`)
 
-module.exports.previewImage = (image, name) => {
-
-
-  var base64Image = apiObject[0].body.base64Image;
-  var nameGiven = apiObject[0].body.nameGiven;
-
-
-
-
+  // var base64Image = image[0].body.base64Image;
+  // var nameGiven = image[0].body.nameGiven;
+  var base64Image = image.base64Image;
+  var nameGiven = image.nameGiven;
 
   var imagekit = new ImageKit({
     publicKey : process.env.publicKey,

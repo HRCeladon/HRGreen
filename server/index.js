@@ -44,8 +44,8 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/images', (req,res) => {
-
-  previewImage(req.body, (error, result) => {
+  console.log('images request body:', req.body)
+  controllers.previewImage(req.body, (error, result) => {
     if(error) {
       console.log(error);
       res.send('failed to upload')
