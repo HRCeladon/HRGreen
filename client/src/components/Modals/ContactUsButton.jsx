@@ -6,7 +6,7 @@ const ContactUsButton = () => {
 
   return (
     <>
-      {!showContactUs && <button className='contact-us-buton' onClick={() => setContactUs(true)}>Contact Us</button>}
+      {!showContactUs && <div className='button-nav footer-button' onClick={() => setContactUs(true)}>Contact Us</div>}
       <ContactUs className='contact-us-form' showContactUs={showContactUs} onClose={() => setContactUs(false)}/>
     </>
   )
