@@ -43,23 +43,29 @@ export default function Login ({ toggleModal }) {
           e.stopPropagation();
         }}
       >
-        <h1>TravelGreen</h1>
+        <div className="logo-modal">
+          <div className="logo-container">
+            <div className="LogoText foot-text">TravelGreen</div>
+            <div className="logo foot-logo"></div>
+        </div>
+
+        </div>
         <img src={trees}/>
         <div className="form">
           <div className="modalBody">
             <h3>Log In</h3>
             <label>Email</label><br/>
-            <input onChange={(e) => setInputEmail(e.target.value)}/><br/>
+            <input className="input-login" onChange={(e) => setInputEmail(e.target.value)}/><br/>
             <label>Password</label><br/>
-            <input id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
+            <input className="input-login"  id="password" type="password" onChange={(e) => setInputPassword(e.target.value)}/><br/>
             {warning === 'invalid' ? <div className="warning">Invalid e-mail/password.</div> : null}
             {warning === 'no account' ? <div className="warning">Account not found.</div> : null}
             {warning === 'wrong password' ? <div className="warning">Incorrect password. Please try again.</div> : null}
           </div>
           <div className="modalFooter">
-            <button onClick={login}>Log In</button><br/>
-            OR
-            <br/><button onClick={() => {
+            <button onClick={login}>Log In</button>
+            <div>OR</div>
+            <button onClick={() => {
               toggleModal('login');
               toggleModal('signup');
             }}>Create Account</button>

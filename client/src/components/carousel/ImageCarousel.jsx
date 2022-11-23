@@ -13,7 +13,6 @@ const InnerContainer = styled.div` //Nested inside the container
 /* border: 1px solid red; */
 scroll-behavior: smooth;
 display: flex;
-overflow: scroll;
 `;
 
 const Data = styled.img`
@@ -22,6 +21,7 @@ width: 100%;
 height: 100%;
 transition: ease-in;
 `;
+
 const ButtonR = styled.div`
 position: absolute;
 font-size: 25px;

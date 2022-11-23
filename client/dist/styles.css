@@ -24,6 +24,22 @@ body {
   font-size: 50px;
 }
 
+.logo-modal {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+}
+
+.input-login {
+  padding: 10px;
+  border-radius: 20px;
+}
+
 .home-container {
   background-color: var(--light-color);
   width: 50%;
@@ -55,6 +71,16 @@ body {
   color: var(--text-color);
 }
 
+.footer-button {
+  color: var(--text-color);
+  background-color: var(--background-secondary);
+}
+
+.footer-button:hover {
+  color: var(--light-color);
+  background-color: var(--text-color);
+}
+
 .seperator {
   color: var(--light-color);
   font-weight: bold;
@@ -65,6 +91,41 @@ body {
   gap: 5px;
   justify-content: baseline;
   align-items: baseline;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+}
+
+.facebook {
+  background-image: url(./assets/logos/facebook.png);
+}
+
+.linkedIn {
+  background-image: url(./assets/logos/linkedin.png);
+  background-size: 35px;
+  background-color: white;
+}
+
+.tumblr {
+  background-image: url(./assets/logos/tumblr.png);
+}
+
+.twitter {
+  background-image: url(./assets/logos/twitter.png);
+  background-size: 35px;
+  background-color: white;
+}
+
+.instagram {
+  background-image: url(./assets/logos/instagram.png);
+  background-size: 35px;
+  background-color: white;
 }
 
 .logo {
@@ -101,7 +162,6 @@ body {
 }
 
 .stats-container {
-
   background-color: var(--background-secondary);
   border-radius: 20px;
   height: 200px;
@@ -124,23 +184,52 @@ body {
 }
 
 .statement {
-  width: 35%;
+  width: 80%;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 38px;
 }
 
 .statement-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
 
 .extra-bold {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 900;
 }
 
 .intro {
   display: flex;
   flex-direction: row;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer {
+  display: flex;
+  gap: 15px;
+}
+
+.team {
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.foot-text {
+  color: var(--text-color);
+  font-size: 30px;
+}
+
+.foot-logo {
+  height: 30px;
 }
