@@ -7,6 +7,7 @@ import Testimonials from '../Testimonials/Testimonials.jsx';
 import ImageGallery from '../Testimonials/ImageGallery.jsx';
 import Footer from "../Footer/Footer.jsx"
 import ImageCarousel from '../carousel/ImageCarousel.jsx'
+
 const API_KEY = 'AIzaSyD2reYJIpHI2mXmu3cl4qQ42Ve4DQDd1DU';
 const {useState, useRef, useEffect} = React;
 
