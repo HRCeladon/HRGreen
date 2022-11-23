@@ -43,6 +43,18 @@ app.post('/login', (req, res) => {
   }).catch((err) => console.log('ERROR HERE: ', err));
 })
 
+app.post('/images', (req,res) => {
+
+  previewImage(req.body, (error, result) => {
+    if(error) {
+      console.log(error);
+      res.send('failed to upload')
+    }
+
+    res.send(result)
+  })
+})
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT);
