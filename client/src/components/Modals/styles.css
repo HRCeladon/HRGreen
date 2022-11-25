@@ -54,6 +54,7 @@ body {
   height: fit-content;
   width: 75%;
   border-radius: 1rem;
+  z-index: 10;
 }
 .error {
   font-size: 18px;
@@ -76,8 +77,10 @@ body {
 .modal-trees {
   position: absolute;
   width: 100%;
+  max-height: 700px;
   bottom: 0;
   left: 0;
+  z-index: -10;
 }
 .modal-footer {
   display: flex;
@@ -97,7 +100,7 @@ body {
   z-index: 10;
 }
 .modal-segment {
-  margin: 0;
+
 }
 /* Input fields for contact us form */
 #your-full-name, #your-phone, #your-email  {
@@ -125,39 +128,47 @@ body {
   resize: none;
 }
 /* Planner modal  */
-.from-to {
+.placesAutocomplete {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.from-autocomplete, .to-autocomplete {
+  display: inline-block;
+  margin: 0;
+  text-align: left;
 }
 .start-end {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-/* Input fields for planner form */
-#from, #to, #start-date, #end-date {
-  display: inline-block;
-  text-align: left;
-  margin: 0 0 10px 0;
-  height: 30px;
-  width: 75%;
-  font-size: 18px;
-  color: darkslategrey;
-}
-.description-and-travelers {
+
+.start-container, .end-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+/* Input fields for planner form */
+#from, #to, #start-date, #end-date {
+  text-align: center;
+  height: 40px;
+  width: 75%;
+  font-size: 20px;
+  color: darkslategrey;
+}
+.travelers-input {
+  margin: 0 auto;
+  text-align: center;
 }
 #description-input, #travelers-input {
-  width: 60%;
+  display: block;
+  margin: 0 auto;
+  width: 75%;
   height: 100px;
-  margin: 5px 0 0 0;
-  font-size: 24px;
   box-sizing: border-box;
   background-color: #f8f8f8;
-  font-size: 18px;
+  font-size: 20px;
   resize: none;
 }
 #image-preview {

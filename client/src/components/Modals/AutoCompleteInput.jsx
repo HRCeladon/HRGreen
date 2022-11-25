@@ -1,50 +1,89 @@
 import React, { useState } from 'react';
 import { fetchPlace } from './formValidation.js';
 
-const AutoCompleteInput = ({ label }) => {
-  const [city, setCity] = useState("");
-  const [autocompleteCities, setAutocompleteCities] = useState([]);
-  const [autocompleteErr, setAutocompleteErr] = useState("");
+const AutoCompleteInput = ({ passFrom, passTo }) => {
+  const [from, setFrom] = useState('');
+  const [autocompleteFrom, setAutocompleteFrom] = useState([]);
+  const [autocompleteFromErr, setAutocompleteFromErr] = useState("");
 
-  const handleCityChange = async (e) => {
-    setCity(e.target.value);
-    if (!city) return;
+  const [to, setTo] = useState('')
+  const [autocompleteTo, setAutocompleteTo] = useState([]);
+  const [autocompleteToErr, setAutocompleteToErr] = useState("");
 
-    const res = await fetchPlace(city);
-    !autocompleteCities.includes(e.target.value) &&
+  const handleFromCityChange = async (e) => {
+    setFrom(e.target.value)
+    passFrom(e.target.value)
+    if (!from) return;
+
+    const res = await fetchPlace(from);
+    !autocompleteFrom.includes(e.target.value) &&
       res.features &&
-      setAutocompleteCities(res.features.map((place) => place.place_name));
-    res.error ? setAutocompleteErr(res.error) : setAutocompleteErr("");
+      setAutocompleteFrom(res.features.map((place) => place.place_name));
+    res.error ? setAutocompleteFromErr(res.error) : setAutocompleteFromErr("");
+  };
+
+  const handleToCityChange = async (e) => {
+    setTo(e.target.value)
+    passTo(e.target.value)
+    if (!to) return;
+
+    const res = await fetchPlace(to);
+    !autocompleteTo.includes(e.target.value) &&
+      res.features &&
+      setAutocompleteTo(res.features.map((place) => place.place_name));
+    res.error ? setAutocompleteToErr(res.error) : setAutocompleteToErr("");
   };
 
   return (
-    <form>
-      <div className="placesAutocomplete">
-        <div className="placesAutocomplete__inputWrap">
-          <label htmlFor="city" className="label">
-            {label}
-          </label><br/>
-          {autocompleteErr && (
-            <div className="error">{autocompleteErr}</div>)}
-          <input
-            list="places"
-            type="text"
-            id="city"
-            name="city"
-            onChange={handleCityChange}
-            value={city}
-            required
-            pattern={autocompleteCities.join("|")}
-            autoComplete="off"
-          />
-          <datalist id="places">
-            {autocompleteCities.map((city, i) => (
-              <option key={i}>{city}</option>
-            ))}
-          </datalist>
-        </div>
+    <div className="placesAutocomplete">
+
+      <div className="from-autocomplete">
+        <label htmlFor="from" className="from-label">From</label><br />
+        {autocompleteFromErr && (
+          <div className="error">{autocompleteFromErr}</div>)}
+        <input
+          list="from-places"
+          type="text"
+          id="from"
+          name="city"
+          onChange={handleFromCityChange}
+          value={from}
+          required
+          pattern={autocompleteFrom.join("|")}
+          autoComplete="off"
+        />
+        {/* Auto-complete list */}
+        <datalist id="from-places">
+          {autocompleteFrom.map((city, i) => (
+            <option key={i}>{city}</option>
+          ))}
+        </datalist>
       </div>
-    </form>
+
+      {/* To input field */}
+      <div className="to-autocomplete">
+        <label htmlFor="to" className="to-label">To</label><br />
+        {autocompleteToErr && (
+          <div className="error">{autocompleteToErr}</div>)}
+        <input
+          list="to-places"
+          type="text"
+          id="to"
+          name="city"
+          onChange={handleToCityChange}
+          value={to}
+          required
+          pattern={autocompleteTo.join("|")}
+          autoComplete="off"
+        />
+        {/* Auto-complete list */}
+        <datalist id="to-places">
+          {autocompleteTo.map((city, i) => (
+            <option key={i}>{city}</option>
+          ))}
+        </datalist>
+      </div>
+    </div>
   );
 };
 

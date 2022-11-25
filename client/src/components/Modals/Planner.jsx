@@ -4,28 +4,23 @@ import { checkTripPlannerForm, formatTravelers } from './formValidation.js'
 import trees from './trees.png'
 
 const Planner = ({showPlanner, onClose}) => {
-  const [from, setFrom] = useState('')
-  const [to, setTo] = useState('')
+  const [from, passFrom] = useState('')
+  const [to, passTo] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [description, setDescription] = useState('')
   const [travelers, setTravelers] = useState('')
   const clearFields = () => {
-    setFrom('')
-    setTo('')
+    passFrom('')
+    passTo('')
     setStartDate('')
     setEndDate('')
     setDescription('')
     setTravelers('')
   }
 
-  const setBackground = () => {
-    let background = document.getElementsByClassName('modal-footer')
-    background.style.setBackground
-  }
-
   const onPlannerSubmit = () => {
-    let isValid = checkTripPlannerForm('from', 'to', startDate, endDate)
+    let isValid = checkTripPlannerForm(from, to, startDate, endDate)
     if (isValid) {
       const tripInfo = {
         from: from,
@@ -43,13 +38,6 @@ const Planner = ({showPlanner, onClose}) => {
     }
   }
 
-  const backgroundTrees = {
-    backgroundImage: `url(${trees})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
-  }
-
   return (showPlanner && (
     <div className='modal' onClick={onClose}>
       <div className='modal-content' onClick={(e) => e.stopPropagation()}>
@@ -60,34 +48,27 @@ const Planner = ({showPlanner, onClose}) => {
           <div className='error'></div>
         </div>
         {/* Modal Body */}
-        <div className='modal-body' >
-          <div className='from-to'>
-              <AutoCompleteInput label={'From'} />
-              <AutoCompleteInput label={'To'} />
-          </div>
+        <div className='modal-body'>
+          <AutoCompleteInput passFrom={passFrom} passTo={passTo} />
 
           <div className='start-end'>
-            <div className='modal-segment'>
-              <label htmlFor='start-date'>Start Date</label><br/>
-              <input type='date' id='start-date' placeholder='Start' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
+            <div className='start-container'>
+              <label htmlFor='start-date'>Start Date</label>
+              <input type='date' id='start-date' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
             </div>
-            <div className='modal-segment'>
-              <label htmlFor='end-date'>End Date</label><br/>
-              <input type='date' id='end-date' placeholder='End' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
+            <div className='end-container'>
+              <label htmlFor='end-date' >End Date</label>
+              <input type='date' id='end-date' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
             </div>
           </div>
 
-          <div className='description-and-travelers'>
-            <div htmlFor='description-input'>Trip Description</div>
-            <textarea id='description-input' rows='5' cols='200' placeholder='Trip Description' onChange={(e)=>setDescription(e.target.value)} value={description}/>
+          <textarea id='description-input' rows='5' cols='200' placeholder='Trip Description' onChange={(e)=>setDescription(e.target.value)} value={description}/>
 
-            <div htmlFor='travelers-input'>Additional Travelers</div>
-            <textarea id='travelers-input' rows='5' cols='200' placeholder='John Doe&#10;John Smith&#10;Jane Doe' onChange={(e)=>setTravelers(e.target.value)} value={travelers}/>
-          </div>
+          <div className='travelers-input' htmlFor='travelers-input'>Additional Travelers</div>
+          <textarea id='travelers-input' rows='5' cols='200' placeholder='John Doe&#10;John Smith&#10;Jane Doe' onChange={(e)=>setTravelers(e.target.value)} value={travelers}/>
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
-
           <button className='modal-button' onClick={onPlannerSubmit}>Save Trip</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
