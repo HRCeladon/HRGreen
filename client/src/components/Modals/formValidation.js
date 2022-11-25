@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+const MAP_BOX_PUBLIC_TOKEN = 'pk.eyJ1IjoidG5ndXllbjQiLCJhIjoiY2xhdm84cnhoMDdvYjNubnBoYnU1eDhjbiJ9._0VdBVtvN4QZQ8yUAWny5g'
 // Helper function to format phone to (XXX) XXX-XXXX when the user types it in
 const formatPhone = (value) => {
   if (!value) return value;
@@ -75,12 +75,12 @@ const checkTripPlannerForm = (from, to, start, end) => {
     errors.removeChild(errors.firstChild);
   }
   // Check input fields
-  if (from === '') { // From field
+  if (from.length <= 1) { // From field
     valid = false;
     let error = createErrorMsg('From location cannot be blank');
     document.getElementsByClassName('error')[0].appendChild(error);
   }
-  if (to === '') { // To field
+  if (to.length <= 1) { // To field
     valid = false;
     let error = createErrorMsg('To location cannot be blank');
     document.getElementsByClassName('error')[0].appendChild(error);
@@ -162,6 +162,19 @@ const checkTripPlannerForm = (from, to, start, end) => {
     })
   }
 
+  // Helper function to fetch list of locations when user types into input
+  const fetchPlace = async (text) => {
+    try {
+      const res = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${text}.json?access_token=${MAP_BOX_PUBLIC_TOKEN}&cachebuster=1625641871908&autocomplete=true&types=place`
+      );
+      if (!res.ok) throw new Error(res.statusText);
+      return res.json();
+    } catch (err) {
+      return { error: "Unable to retrieve places" };
+    }
+  };
+
   let tripDetails =  {
     from: 'Houston, TX',
     to: 'Orlando, FL',
@@ -180,7 +193,8 @@ export {
   formatTravelers,
   readImages,
   submitImage,
-  tripDetails,
+  fetchPlace,
   checkContactUsForm,
-  checkTripPlannerForm
+  checkTripPlannerForm,
+  tripDetails
 }

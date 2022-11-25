@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import AutoCompleteInput from './AutoCompleteInput.jsx'
 import { checkTripPlannerForm, formatTravelers } from './formValidation.js'
+import trees from './trees.png'
 
 const Planner = ({showPlanner, onClose}) => {
   const [from, setFrom] = useState('')
@@ -17,8 +19,13 @@ const Planner = ({showPlanner, onClose}) => {
     setTravelers('')
   }
 
+  const setBackground = () => {
+    let background = document.getElementsByClassName('modal-footer')
+    background.style.setBackground
+  }
+
   const onPlannerSubmit = () => {
-    let isValid = checkTripPlannerForm(from, to, startDate, endDate)
+    let isValid = checkTripPlannerForm('from', 'to', startDate, endDate)
     if (isValid) {
       const tripInfo = {
         from: from,
@@ -36,6 +43,13 @@ const Planner = ({showPlanner, onClose}) => {
     }
   }
 
+  const backgroundTrees = {
+    backgroundImage: `url(${trees})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+  }
+
   return (showPlanner && (
     <div className='modal' onClick={onClose}>
       <div className='modal-content' onClick={(e) => e.stopPropagation()}>
@@ -48,15 +62,8 @@ const Planner = ({showPlanner, onClose}) => {
         {/* Modal Body */}
         <div className='modal-body' >
           <div className='from-to'>
-            <div className='modal-segment'>
-              <label htmlFor='from'>From</label><br/>
-              <input type='address' id='from' placeholder='Ex. Texas' onChange={(e)=>setFrom(e.target.value)} value={from}/>
-            </div>
-
-            <div className='modal-segment'>
-              <label htmlFor='to'>To</label><br/>
-              <input type='address' id='to' placeholder='Ex. Florida' onChange={(e)=>setTo(e.target.value)} value={to} />
-            </div>
+              <AutoCompleteInput label={'From'} />
+              <AutoCompleteInput label={'To'} />
           </div>
 
           <div className='start-end'>
@@ -64,7 +71,6 @@ const Planner = ({showPlanner, onClose}) => {
               <label htmlFor='start-date'>Start Date</label><br/>
               <input type='date' id='start-date' placeholder='Start' onChange={(e)=>setStartDate(e.target.value)} value={startDate} /><br/>
             </div>
-
             <div className='modal-segment'>
               <label htmlFor='end-date'>End Date</label><br/>
               <input type='date' id='end-date' placeholder='End' onChange={(e)=>setEndDate(e.target.value)} value={endDate} /><br/>
@@ -81,9 +87,11 @@ const Planner = ({showPlanner, onClose}) => {
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>
+
           <button className='modal-button' onClick={onPlannerSubmit}>Save Trip</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
+        <img className='modal-trees' src={trees} alt='trees'/>
       </div>
     </div>
     )
