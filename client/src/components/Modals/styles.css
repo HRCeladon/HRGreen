@@ -130,13 +130,13 @@ body {
 /* Planner modal  */
 .placesAutocomplete {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: left;
 }
 .from-autocomplete, .to-autocomplete {
   display: inline-block;
-  margin: 0;
-  text-align: left;
+  margin: 0 auto;
+  align-items: left;
 }
 .start-end {
   display: flex;
@@ -151,9 +151,9 @@ body {
 }
 /* Input fields for planner form */
 #from, #to, #start-date, #end-date {
-  text-align: center;
+  text-align: left;
   height: 40px;
-  width: 75%;
+  width: 90%;
   font-size: 20px;
   color: darkslategrey;
 }

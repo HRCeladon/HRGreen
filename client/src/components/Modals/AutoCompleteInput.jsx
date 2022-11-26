@@ -2,41 +2,41 @@ import React, { useState } from 'react';
 import { fetchPlace } from './formValidation.js';
 
 const AutoCompleteInput = ({ passFrom, passTo }) => {
+  // From input states
   const [from, setFrom] = useState('');
   const [autocompleteFrom, setAutocompleteFrom] = useState([]);
   const [autocompleteFromErr, setAutocompleteFromErr] = useState("");
-
+  // To input states
   const [to, setTo] = useState('')
   const [autocompleteTo, setAutocompleteTo] = useState([]);
   const [autocompleteToErr, setAutocompleteToErr] = useState("");
 
+  // Auto complete for From input field
   const handleFromCityChange = async (e) => {
     setFrom(e.target.value)
-    passFrom(e.target.value)
+    passFrom(e.target.value) // Pass input up to planner
     if (!from) return;
 
     const res = await fetchPlace(from);
-    !autocompleteFrom.includes(e.target.value) &&
-      res.features &&
+    !autocompleteFrom.includes(e.target.value) && res.features &&
       setAutocompleteFrom(res.features.map((place) => place.place_name));
     res.error ? setAutocompleteFromErr(res.error) : setAutocompleteFromErr("");
   };
-
+  // Auto complete for To input field
   const handleToCityChange = async (e) => {
     setTo(e.target.value)
-    passTo(e.target.value)
+    passTo(e.target.value) // Pass input up to planner
     if (!to) return;
 
     const res = await fetchPlace(to);
-    !autocompleteTo.includes(e.target.value) &&
-      res.features &&
+    !autocompleteTo.includes(e.target.value) && res.features &&
       setAutocompleteTo(res.features.map((place) => place.place_name));
     res.error ? setAutocompleteToErr(res.error) : setAutocompleteToErr("");
   };
 
   return (
     <div className="placesAutocomplete">
-
+      {/* From input field */}
       <div className="from-autocomplete">
         <label htmlFor="from" className="from-label">From</label><br />
         {autocompleteFromErr && (
@@ -59,7 +59,6 @@ const AutoCompleteInput = ({ passFrom, passTo }) => {
           ))}
         </datalist>
       </div>
-
       {/* To input field */}
       <div className="to-autocomplete">
         <label htmlFor="to" className="to-label">To</label><br />
