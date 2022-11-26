@@ -20,7 +20,7 @@ const renderView = () => {
     case "Home":
       return (
         // <HomePage />
-        <PlannerButton />
+        <TripClick />
       )
   }
 }

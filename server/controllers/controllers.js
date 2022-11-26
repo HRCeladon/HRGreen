@@ -2,7 +2,7 @@ var ImageKit = require("imagekit");
 
 
 module.exports.previewImage = (image, callback) => {
-  console.log(`Image:${image} Callback:${callback}`)
+  // console.log(`Image:${image} Callback:${callback}`)
   console.log(`publ ${process.env.publicKey} Priv ${process.env.privateKey} url ${process.env.urlEndpoint}`)
 
   // var base64Image = image[0].body.base64Image;
@@ -17,13 +17,14 @@ module.exports.previewImage = (image, callback) => {
   })
 
 
+
   var imageObject = {
     file: base64Image,
     fileName: nameGiven,
     tags: ["BlueOcean"]
   }
 
-  imagekit.upload((error, result) => {
+  imagekit.upload(imageObject, (error, result) => {
     if(error) callback(error, null);
     else callback(null, result);
   })

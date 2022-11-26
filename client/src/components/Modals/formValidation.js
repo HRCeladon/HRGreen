@@ -1,4 +1,5 @@
 import axios from 'axios'
+import React from 'react'
 const MAP_BOX_PUBLIC_TOKEN = 'pk.eyJ1IjoidG5ndXllbjQiLCJhIjoiY2xhdm84cnhoMDdvYjNubnBoYnU1eDhjbiJ9._0VdBVtvN4QZQ8yUAWny5g'
 // Helper function to format phone to (XXX) XXX-XXXX when the user types it in
 const formatPhone = (value) => {
@@ -186,11 +187,12 @@ const submitImage = (e, setImages) => {
   getBase64(event.target.files[0], (result) => {
     var apiObject = { base64Img: result, nameGiven: name }
     axios.post('./images', apiObject)
-      .then((apICallResult) => {
-        console.log(apiObjectResult)
+      .then((apiCallResult) => {
+        console.log('apiCallResult:', apiCallResult)
         submittedImages.push(apiCallResult.data.url)
+        console.log('img urls:', submittedImages)
         setImages(submittedImages)
-        forceUdpate();
+        // forceUpdate();
       })
       .catch(err => console.log('Failed to upload image:', err))
   })
