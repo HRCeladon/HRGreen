@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const CarouselContainer = styled.section` //The Outer most div
 /* border: 2px solid purple; */
 position: relative;
-width: 400px;
+width: 100%;
 height: 250px;
 overflow: hidden;
 flex-shrink:0;
@@ -61,9 +61,18 @@ const ImageCarousel = ({ data }) => {
     <CarouselContainer>
       <ButtonL onClick={handleLeft}>{'<'}</ButtonL>
       <ButtonR onClick={handleRight}>{'>'}</ButtonR>
-      <InnerContainer >
-        <Data src={images[active]} />
-      </InnerContainer>
+
+        <div style={{
+          height: '100%',
+          backgroundImage: `url('${images[active]}')`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+          backgroundColor: '#D6E880',
+          borderRadius: '10px',
+
+        }}></div>
+
     </CarouselContainer>
   )
 }
