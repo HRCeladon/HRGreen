@@ -7,8 +7,6 @@ margin-top: 15px;
 `;
 const Intro = styled.div`
 font-weight: bold;
-/* text-decoration: underline; */
-/* margin-bottom: 15px; */
 `;
 const DataHeader = styled.div`
 background-color: #75a43d;
@@ -19,7 +17,6 @@ border-top: 1px solid black;
 font-size:18px;
 `;
 const ClientDataInfo = styled.div`
-/* background-color: #AACD4F; */
 display: flex;
 justify-content: space-between;
 border-bottom: 1px solid black;
@@ -57,9 +54,11 @@ width: 100%;
 const StatusCheck = styled.div`
 display: flex;
 justify-content: ${(props) => (props.change ? 'flex-start' : 'center')};
-background-color: ${(props) => (props.check ? '#F0EAD2' : '#f64949')};
+background-color: ${(props) => (props.check ? '#F0EAD2' : '#ff3e3e')};
+//f64949
 border-right: 1px solid black;
 width: 100%;
+cursor: ${(props) => (props.check ? 'default' : 'pointer')};;
 `;
 const StatusButton = styled.div`
 `
@@ -69,7 +68,7 @@ const ClientData = ({ data }) => {
     if (bool) {
       return 'Complete'
     } else {
-      return 'In Progress'
+      return 'Awaiting Approval'
     }
   }
 
