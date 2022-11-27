@@ -19,8 +19,7 @@ const renderView = () => {
   switch (view) {
     case "Home":
       return (
-        // <HomePage />
-        <TripClick />
+        <HomePage />
       )
   }
 }
