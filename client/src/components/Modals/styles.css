@@ -35,7 +35,7 @@ body {
   height: 40px;
   width: 10%;
 }
-.trip-planner-button {
+.trip-planner-button, .trip-entry-button {
   background-color: #AACD4F;
   border-radius: 1rem;
   height: 40px;
@@ -45,15 +45,15 @@ body {
 .modal-content {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: space-between;
+  justify-content: space-evenly;
+  /* align-content: space-between; */
   gap: 10px;
   border-radius: 1rem;
   background-color: #F0EAD2;
   height: fit-content;
   width: 75%;
   border-radius: 1rem;
+  z-index: 10;
 }
 .error {
   font-size: 18px;
@@ -66,11 +66,23 @@ body {
   text-align: center;
 }
 .modal-body {
+  justify-content: center;
   padding: 10px;
   font-size: 18px;
   border-top: 1px solid #648A34;
   border-bottom: 1px solid #648A34;
-  margin: 0 2rem 0 2rem;
+  margin: 0 auto;
+  width: 80%;
+  max-height: 1000px;
+  overflow-y: auto;
+}
+.modal-trees {
+  position: absolute;
+  width: 100%;
+  max-height: 700px;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
 }
 .modal-footer {
   display: flex;
@@ -87,9 +99,7 @@ body {
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
-}
-.modal-segment {
-  margin: 0;
+  z-index: 10;
 }
 /* Input fields for contact us form */
 #your-full-name, #your-phone, #your-email  {
@@ -117,38 +127,59 @@ body {
   resize: none;
 }
 /* Planner modal  */
-.from-to {
+.placesAutocomplete {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.from-autocomplete, .to-autocomplete {
+  display: inline-block;
+  margin: 0 auto;
+  align-items: center;
+  width: 75%;
 }
 .start-end {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.start-container, .end-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 /* Input fields for planner form */
 #from, #to, #start-date, #end-date {
-  display: inline-block;
   text-align: left;
-  margin: 0 0 10px 0;
-  height: 30px;
-  width: 75%;
-  font-size: 18px;
+  height: 40px;
+  width: 90%;
+  font-size: 20px;
   color: darkslategrey;
 }
-.description-and-travelers {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+.travelers-input {
+  margin: 0 auto;
+  text-align: center;
 }
 #description-input, #travelers-input {
-  width: 60%;
+  display: block;
+  margin: 0 auto;
+  width: 75%;
   height: 100px;
-  margin: 5px 0 0 0;
-  font-size: 24px;
   box-sizing: border-box;
   background-color: #f8f8f8;
-  font-size: 18px;
+  font-size: 20px;
   resize: none;
+}
+#image-preview {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  max-width: 60%;
+  overflow-y: auto;
+}
+.thumbnail {
+  max-width: 250px;
+  min-width: 150px;
+  height: 150px;
 }
