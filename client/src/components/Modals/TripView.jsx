@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { readImages, tripDetails, submitImage } from './formValidation.js'
 import Maps from '../Maps/Maps.jsx'
+import ImageCarousel from './ImageCarousel.jsx'
+// const dummyEnv = require('./dummyEnv.js')
+
+const testImages = ['https://ik.imagekit.io/1cavwjzyi/young-guy-vacation-attractive-male-colorful-outfit-tropical-island-setting-as-stereotype-tourist-48570298_4K_srLIIA.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1669500549361']
 
 const TripView = ({ showTrip, onClose, tripNumber }) => {
   const [images, setImages] = useState([])
@@ -21,22 +25,20 @@ const TripView = ({ showTrip, onClose, tripNumber }) => {
             <Maps />
           </div>
           {/* Trip Description */}
-          <div className='modal-segment'>
-            <div className='trip-details'>Trip Details</div>
+          <div className='trip-details'>Trip Details</div>
             <ul >
               <li>From: {tripDetails.from}</li>
               <li>To: {tripDetails.to}</li>
               <li>Start Date: {tripDetails.startDate}</li>
               <li>End Date: {tripDetails.endDate}</li>
-              <li>Travelers: {tripDetails.travelers.map(traveler => traveler)}</li>
+              <li>Travelers: {tripDetails.travelers.join(', ')}</li>
             </ul>
-          </div>
           {/* Image upload */}
-          <div className='modal-segment'>
-            <label id='files' htmlFor='files' >Upload Your Photos!</label> <br/>
-            <input type='file' id='files' multiple='multiple' accept='image/png image/jepg image/jpg' onChange={(e) => submitImage(e, setImages)} />
-            <output id='image-preview' />
-          </div>
+          <label id='files' htmlFor='files' >Upload Your Photos!</label> <br/>
+          <input type='file' id='files' multiple='multiple' accept='image/png image/jepg image/jpg' onChange={(e) => submitImage(e, setImages, images)} />
+          <output id='image-preview' />
+          {/* Image carousel */}
+          <ImageCarousel images={images}/>
         </div>
         {/* Modal Footer */}
         <div className='modal-footer'>

@@ -44,12 +44,10 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/images', (req,res) => {
-  console.log('images request body:', req.body)
   controllers.previewImage(req.body, (error, result) => {
     if(error) {
       res.send('failed to upload')
     }
-
     res.send(result)
   })
 })

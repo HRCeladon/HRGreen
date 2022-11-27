@@ -1,6 +1,5 @@
 import axios from 'axios'
-import React from 'react'
-const MAP_BOX_PUBLIC_TOKEN = 'pk.eyJ1IjoidG5ndXllbjQiLCJhIjoiY2xhdm84cnhoMDdvYjNubnBoYnU1eDhjbiJ9._0VdBVtvN4QZQ8yUAWny5g'
+
 // Helper function to format phone to (XXX) XXX-XXXX when the user types it in
 const formatPhone = (value) => {
   if (!value) return value;
@@ -132,43 +131,7 @@ const checkTripPlannerForm = (from, to, start, end) => {
   }
   return valid;
 }
-// Helper function to handle image uploads and preview them
-const readImages = (e, cb) => {
-  let errors = document.getElementsByClassName('error')[0];
-  if (errors.firstChild) {
-    errors.removeChild(errors.firstChild);
-  }
-  cb([]);
-  let newImages = [];
-  if (window.File && window.FileReader && window.FileList && window.Blob) {
-    const files = e.target.files;
-    const output = document.querySelector('#image-preview');
-    output.innerHTML = '';
-    if (files.length < 6) {
-      for (let i = 0; i < files.length; i++) {
-        if (!files[i].type.match('image')) {
-          continue;
-        }
-        const picReader = new FileReader();
-        picReader.addEventListener('load', function (event) {
-          const picFile = event.target;
-          const div = document.createElement('div');
-          div.innerHTML = `<img class='thumbnail' src='${picFile.result}' title='${picFile.name}'/>`;
-          output.appendChild(div);
-          newImages.push(files[i]);
-        });
-        picReader.readAsDataURL(files[i]);
-      }
-      console.log('Images:', newImages)
-      cb(newImages);
-    } else {
-      let error = createErrorMsg('Cannot add more than 5 images');
-      document.getElementsByClassName('error')[0].appendChild(error);
-      e.target.value = null;
-    }
-  }
-}
-
+// Helper function to format image
 const getBase64 = (file, cb) => {
   let reader = new FileReader();
   reader.readAsDataURL(file);
@@ -179,8 +142,8 @@ const getBase64 = (file, cb) => {
     console.log('Error: ', error)
   };
 }
-
-const submitImage = (e, setImages) => {
+// Helper function to upload image and retrieve a url for it
+const submitImage = (e, setImages, images) => {
   e.preventDefault()
   const submittedImages = []
   let name = event.target.files[0].name
@@ -190,19 +153,16 @@ const submitImage = (e, setImages) => {
       .then((apiCallResult) => {
         console.log('apiCallResult:', apiCallResult)
         submittedImages.push(apiCallResult.data.url)
-        console.log('img urls:', submittedImages)
-        setImages(submittedImages)
-        // forceUpdate();
+        setImages(images.concat(submittedImages))
       })
       .catch(err => console.log('Failed to upload image:', err))
   })
 }
-
 // Helper function to fetch list of locations when user types into input
 const fetchPlace = async (text) => {
   try {
     const res = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${text}.json?access_token=${MAP_BOX_PUBLIC_TOKEN}&cachebuster=1625641871908&autocomplete=true&types=place`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${text}.json?access_token=${process.env.REACT_APP_MAP_API_KEY}&cachebuster=1625641871908&autocomplete=true&types=place`
     );
     if (!res.ok) throw new Error(res.statusText);
     return res.json();
@@ -216,7 +176,7 @@ let tripDetails = {
   to: 'Honolulu, Hawaii, United States',
   startDate: '2022-11-16',
   endDate: '2022-11-10',
-  travelers: ['John', 'Jane'],
+  travelers: ['John Smith', 'Jane Doe'],
   tripCompleted: false,
   stars: 0,
   reviews: []
@@ -227,7 +187,6 @@ export {
   verifyEmail,
   getDropdownValue,
   formatTravelers,
-  readImages,
   submitImage,
   fetchPlace,
   checkContactUsForm,

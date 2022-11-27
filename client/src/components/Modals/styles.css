@@ -45,9 +45,8 @@ body {
 .modal-content {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: space-between;
+  justify-content: space-evenly;
+  /* align-content: space-between; */
   gap: 10px;
   border-radius: 1rem;
   background-color: #F0EAD2;
@@ -67,12 +66,15 @@ body {
   text-align: center;
 }
 .modal-body {
+  justify-content: center;
   padding: 10px;
   font-size: 18px;
   border-top: 1px solid #648A34;
   border-bottom: 1px solid #648A34;
-  margin: 0 2rem 0 2rem;
-  width: 85%;
+  margin: 0 auto;
+  width: 80%;
+  max-height: 1000px;
+  overflow-y: auto;
 }
 .modal-trees {
   position: absolute;
@@ -98,9 +100,6 @@ body {
   text-align: center;
   margin: 0 auto;
   z-index: 10;
-}
-.modal-segment {
-
 }
 /* Input fields for contact us form */
 #your-full-name, #your-phone, #your-email  {

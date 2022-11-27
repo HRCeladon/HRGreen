@@ -1,22 +1,18 @@
 var ImageKit = require("imagekit");
-
+// const dummyEnv = require('../../client/src/components/Modals/dummyEnv.js')
 
 module.exports.previewImage = (image, callback) => {
-  // console.log(`Image:${image} Callback:${callback}`)
-  console.log(`publ ${process.env.publicKey} Priv ${process.env.privateKey} url ${process.env.urlEndpoint}`)
+  // console.log('dummy Env: ', dummyEnv.dummyEnv)
+  console.log(`public:${process.env.REACT_APP_publicKey} private:${process.env.REACT_APP_privateKey} url:${process.env.REACT_APP_urlEndpoint}`)
 
-  // var base64Image = image[0].body.base64Image;
-  // var nameGiven = image[0].body.nameGiven;
-  var base64Image = image.base64Image;
+  var base64Image = image.base64Img;
   var nameGiven = image.nameGiven;
 
   var imagekit = new ImageKit({
-    publicKey : process.env.publicKey,
-    privateKey: process.env.privateKey,
-    urlEndpoint: process.env.urlEndpoint
+    publicKey : process.env.REACT_APP_publicKey,
+    privateKey: process.env.REACT_APP_privateKey,
+    urlEndpoint: process.env.REACT_APP_urlEndpoint
   })
-
-
 
   var imageObject = {
     file: base64Image,
