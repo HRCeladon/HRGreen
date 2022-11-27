@@ -72,7 +72,7 @@ const Planner = ({showPlanner, onClose}) => {
           <button className='modal-button' onClick={onPlannerSubmit}>Save Trip</button>
           <button className='modal-button' onClick={onClose} >Close</button>
         </div>
-        <img className='modal-trees' src={trees} alt='trees'/>
+        {/* <img className='modal-trees' src={trees} alt='trees'/> */}
       </div>
     </div>
     )

@@ -53,8 +53,8 @@ const ImageCarousel = ({ images }) => {
 
   return (length > 0 ? (
     <CarouselContainer>
-    <ButtonL onClick={handleLeft}>{'<'}</ButtonL>
-    <ButtonR onClick={handleRight}>{'>'}</ButtonR>
+    {length > 1 && (<ButtonL onClick={handleLeft}>{'<'}</ButtonL>)}
+    {length > 1 && (<ButtonR onClick={handleRight}>{'>'}</ButtonR>)}
       <div style={{
         height: '100%',
         backgroundImage: `url('${images[active]}')`,

@@ -4,10 +4,10 @@ import Maps from '../Maps/Maps.jsx'
 import ImageCarousel from './ImageCarousel.jsx'
 // const dummyEnv = require('./dummyEnv.js')
 
-const testImages = ['https://ik.imagekit.io/1cavwjzyi/young-guy-vacation-attractive-male-colorful-outfit-tropical-island-setting-as-stereotype-tourist-48570298_4K_srLIIA.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1669500549361']
+const testImages = ['https://ik.imagekit.io/1cavwjzyi/young-guy-vacation-attractive-male-colorful-outfit-tropical-island-setting-as-stereotype-tourist-48570298_Y4j8oI2hR.jpeg']
 
 const TripView = ({ showTrip, onClose, tripNumber }) => {
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState(testImages)
   tripNumber = tripNumber || 1;
 
   return (showTrip && (

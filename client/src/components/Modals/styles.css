@@ -130,17 +130,18 @@ body {
 .placesAutocomplete {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: flex-start;
 }
 .from-autocomplete, .to-autocomplete {
   display: inline-block;
   margin: 0 auto;
-  align-items: left;
+  align-items: center;
+  width: 75%;
 }
 .start-end {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .start-container, .end-container {
