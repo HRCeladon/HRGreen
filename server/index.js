@@ -7,19 +7,19 @@ const Users = require('./db/index.js');
 const argon2 = require('argon2');
 const crypto = require('crypto');
 
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb' }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
 app.post('/signup', (req, res) => {
-  Users.find({_id: req.body.email}).then((data) => {
+  Users.find({ _id: req.body.email }).then((data) => {
     if (data.length === 0) {
       let salt = crypto.randomBytes(16);
-      argon2.hash(req.body.pwd, {salt}).then((hashed) => {
-        Users.insertMany([{_id: req.body.email, password: hashed, firstName: req.body.fName, lastName: req.body.lName}], {ordered: false})
-        .then((data) => res.send())
-        .catch((err) => res.send());
+      argon2.hash(req.body.pwd, { salt }).then((hashed) => {
+        Users.insertMany([{ _id: req.body.email, password: hashed, firstName: req.body.fName, lastName: req.body.lName }], { ordered: false })
+          .then((data) => res.send())
+          .catch((err) => res.send());
       });
     } else {
       res.send('An account under this email already exists. Please log in.');
@@ -28,11 +28,11 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-  Users.find({_id: req.body.email}).then((data) => {
+  Users.find({ _id: req.body.email }).then((data) => {
     if (data.length !== 0) {
       argon2.verify(data[0].password, req.body.pwd).then((check) => {
         if (check) {
-          res.send({email: data[0]._id, firstName: data[0].firstName, lastName: data[0].lastName, employee: data[0].employee, trees: data[0].trees, trips: data[0].trips});
+          res.send({ email: data[0]._id, firstName: data[0].firstName, lastName: data[0].lastName, employee: data[0].employee, trees: data[0].trees, trips: data[0].trips });
         } else {
           res.send('Incorrect password. Please try again.');
         }
@@ -43,9 +43,9 @@ app.post('/login', (req, res) => {
   }).catch((err) => console.log('ERROR HERE: ', err));
 })
 
-app.post('/images', (req,res) => {
+app.post('/images', (req, res) => {
   controllers.previewImage(req.body, (error, result) => {
-    if(error) {
+    if (error) {
       res.send('failed to upload')
     }
     res.send(result)
@@ -54,16 +54,21 @@ app.post('/images', (req,res) => {
 
 app.get('/trees', (req, res) => {
   if (req.body.email) {
-    Users.find({_id: req.body.email}, {trees:1, _id:0}).then((data) => {
+    Users.find({ _id: req.body.email }, { trees: 1, _id: 0 }).then((data) => {
       res.send(data)
     })
-    .catch((err) => console.log('ERROR HERE: ', err));
+      .catch((err) => console.log('ERROR HERE: ', err));
   } else {
-    Users.find({}, {trees:1, _id:0}).then((data) => {
+    Users.find({}, { trees: 1, _id: 0 }).then((data) => {
       res.send(data)
     })
-    .catch((err) => console.log('ERROR HERE: ', err));
+      .catch((err) => console.log('ERROR HERE: ', err));
   }
+})
+app.get('/all', (req, res) => {
+  Users.find({})
+    .then((data) => res.send(data))
+    .catch((err) => console.log(err))
 })
 
 const PORT = process.env.PORT || 3001;
