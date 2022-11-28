@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ClientData from './ClientData.jsx'
 import NavBar from '../NavBar/Nav.jsx'
 import Maps from '../Maps/Maps.jsx'
+import EmployeeModal from './employeeModal/EmployeeModal.jsx'
+
 
 const EmployeePage = styled.div`
   width: 99;
@@ -30,47 +32,12 @@ font-size: 20px;
 font-weight: bold;
 text-decoration: underline;
 `
-const data = [
-  {
-    name: 'Ricardo Vargas',
-    email: 'Richi@gmail.com',
-    location: 'Sacramento California',
-    status: false
-  },
-  {
-    name: 'Ricardo Vargas',
-    email: 'Ricardo@gmail.com',
-    location: 'Sacramento California',
-    status: false
-  },
-  {
-    name: 'Ricardo Vargas',
-    email: 'Ricardo.Vargas2424@gmail.com',
-    location: 'Sacramento California',
-    status: true
-  },
-  {
-    name: 'Ricardo Vargas',
-    email: 'Ricardo.Vargas2424@gmail.com',
-    location: 'Sacramento California',
-    status: true
-  },
-  {
-    name: 'Ricardo Vargas',
-    email: 'Ricardo.Vargas2424@gmail.com',
-    location: 'Sacramento California',
-    status: false
-  },
-  {
-    name: 'Ricardo Vargas',
-    email: 'Ricardo.Vargas2424@gmail.com',
-    location: 'Sacramento California',
-    status: true
-  }
-]
 const Employee = () => {
+  const [openModal, setOpenModal] = useState(false)
+  const [currentEmployee, setCurrentEmployee] = useState([])
   return (
     <>
+      {openModal && <EmployeeModal currentEmployee={currentEmployee} closeModal={setOpenModal} />}
       <NavBar />
       <EmployeePage>
         <EmployeeContainer>
@@ -78,7 +45,7 @@ const Employee = () => {
           <MapStyle>
             <Maps />
           </MapStyle>
-          <ClientData data={data.concat(data)} />
+          <ClientData setCurrentEmployee={setCurrentEmployee} openModal={setOpenModal} />
         </EmployeeContainer>
       </EmployeePage>
     </>
