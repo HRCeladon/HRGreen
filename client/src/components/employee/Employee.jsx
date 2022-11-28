@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import ClientData from './ClientData.jsx'
 import NavBar from '../NavBar/Nav.jsx'
 import Maps from '../Maps/Maps.jsx'
+import ContactUs from './ContactUs/ContactUs.jsx'
 import EmployeeModal from './employeeModal/EmployeeModal.jsx'
-
-
 const EmployeePage = styled.div`
   width: 99;
   display: flex;
@@ -46,6 +45,7 @@ const Employee = () => {
             <Maps />
           </MapStyle>
           <ClientData setCurrentEmployee={setCurrentEmployee} openModal={setOpenModal} />
+          <ContactUs/>
         </EmployeeContainer>
       </EmployeePage>
     </>

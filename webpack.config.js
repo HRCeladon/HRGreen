@@ -41,5 +41,10 @@ module.exports = {
       compress: true,
       port: 3000,
     },
-    devtool: 'source-map'
+    devtool: 'source-map',
+    performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+  }
 };
