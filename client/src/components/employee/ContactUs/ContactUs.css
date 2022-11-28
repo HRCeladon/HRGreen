@@ -1,0 +1,105 @@
+.contactUsContainer {
+  background-color: var(--background-secondary);
+  border-radius: 20px;
+  height: 500px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.contactUsCard {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  height: 15%;
+  background-color: var(--light-color);
+  margin: 15px;
+  padding: 25px;
+  padding-bottom: 0px;
+  z-index:100;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor:pointer;
+}
+
+.fadedContactUsCard {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  height: 15%;
+  background-color: var(--light-color);
+  margin: 15px;
+  padding: 25px;
+  padding-bottom: 0px;
+  z-index:100;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  opacity:.5;
+}
+
+.contactUsCard::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.contactUsCard:hover {
+  -webkit-transform: scale(1.03, 1.03);
+  transform: scale(1.03, 1.03);
+}
+
+.contactUsCard:hover::after {
+  opacity: 1;
+}
+
+.cuCardContainer {
+  overflow-y: auto;
+  height: 95%;
+}
+
+.cuCardContainer::-webkit-scrollbar {
+  width:5px;
+}
+/* .cuCardContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius:5px;
+}
+.cuCardContainer::-webkit-scrollbar-thumb {
+  border-radius:5px;
+  -webkit-box-shadow: inset 0 0 6px rgb(253, 250, 233);
+} */
+
+.cardNameHeading {
+  font-weight: bold;
+}
+.cardDateHeading {
+  font-weight: bold;
+}
+.cardEmailHeading {
+  font-weight: bold;
+}
+.cardPhoneHeading {
+  font-weight: bold;
+}
+.cardBodyHeading {
+  font-weight: bold;
+}
+.expandBody {
+  font-weight: bold;
+  font-style: italic;
+}

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ClientData from './ClientData.jsx'
 import NavBar from '../NavBar/Nav.jsx'
 import Maps from '../Maps/Maps.jsx'
+import ContactUs from './ContactUs/ContactUs.jsx'
 
 const EmployeePage = styled.div`
   width: 99;
@@ -79,6 +80,7 @@ const Employee = () => {
             <Maps />
           </MapStyle>
           <ClientData data={data.concat(data)} />
+          <ContactUs/>
         </EmployeeContainer>
       </EmployeePage>
     </>
