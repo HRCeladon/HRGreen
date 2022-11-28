@@ -1,0 +1,198 @@
+.resolveModal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: .5;
+}
+
+.resolveModal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+}
+
+.resolveModal {
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: 1.75rem auto;
+  border-radius: 3px;
+  max-width: 700px;
+  padding: 2rem;
+  height: 60%;
+  background-color: var(--light-color);
+}
+
+.resolveModal-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.resolveModal-close-button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  opacity: .3;
+  cursor: pointer;
+  border: none;
+}
+
+#submitButton {
+  font-size: .9rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  padding: .3rem 1rem;
+  margin-left: .5rem;
+  cursor: pointer;
+}
+
+.button-default {
+  background: #247BA0;
+  color: #fff;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.answerThumbnail {
+  padding: 5px; /* Some padding */
+  width: 75px; /* Set a small width */
+}
+.modal-NameDateDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+#modal-divHeader {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: large;
+}
+
+.modal-NameDateDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 30px;
+  margin-left: 5%;
+}
+
+.modal-EmailDiv {
+  width: 90%;
+  margin: 30px;
+  margin-left: 5%;
+}
+.modal-PhoneDiv {
+  width: 90%;
+  margin: 30px;
+  margin-left: 5%;
+}
+
+.modal-BodyDiv {
+  width: 90%;
+  margin: 30px;
+  margin-left: 5%;
+  overflow-y: auto;
+}
+
+.modal-ButtonDiv {
+  width: 88%;
+  margin: 30px;
+  margin-left: 5%;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 0;
+  position: absolute;
+}
+
+.modal-BodyContent {
+  width: 90%;
+  margin-left: 30px;
+}
+
+
+.ResolveButton {
+  background: #5e943c;
+  border: 1px solid #5e943c;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.ResolveButton:hover,
+.ResolveButton:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #5e943c;
+}
+
+.ResolveButton:active {
+  opacity: .5;
+}
+
+.CloseButton {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.CloseButton:hover,
+.CloseButton:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.CloseButton:active {
+  opacity: .5;
+}

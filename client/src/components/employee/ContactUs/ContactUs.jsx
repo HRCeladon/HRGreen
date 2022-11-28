@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './ContactUs.css'
 import ContactUsCard from './ContactUsCard.jsx';
+import useModal from '../../../subComponents/modalHook.jsx';
+import ResolveModal from './Modal/ResolveModal.jsx';
 
 
   var fakeData = [
@@ -116,6 +118,10 @@ export default function ContactUs() {
 
 
 
+  const {isShowing, toggle} = useModal();
+
+  const [currentContact, setContact] = useState({});
+
 
 
   var notDealtWith = fakeData.filter((contact) => {
@@ -134,14 +140,24 @@ export default function ContactUs() {
           return <ContactUsCard
           contact={contact}
           key={Math.random()}
+          setContact={setContact}
+          toggle={toggle}
           />
         })}
         {dealtWith.map((contact) => {
           return <ContactUsCard
           contact={contact}
           key={Math.random()}
+          setContact={setContact}
+          toggle={toggle}
           />
         })}
+      </div>
+      <div id="ResolveFlex">
+        <ResolveModal
+        isShowing={isShowing}
+        toggle={toggle}
+        contact={currentContact}/>
       </div>
     </div>
   )

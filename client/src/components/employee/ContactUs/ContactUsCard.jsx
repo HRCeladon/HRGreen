@@ -7,11 +7,15 @@ import './ContactUs.css'
 
 
 
-export default function ContactUsCard({contact}) {
+export default function ContactUsCard({contact, setContact, toggle}) {
 
 
-  console.log(contact)
 
+
+  var openModal = () => {
+    setContact(contact);
+    toggle();
+  }
 
 
   var bodyInfo = contact.review
@@ -22,7 +26,7 @@ export default function ContactUsCard({contact}) {
 
   if(contact.dealtWith) {
     return (
-    <div className="fadedContactUsCard">
+    <div className="fadedContactUsCard" onClick={openModal}>
       <div className="cardNameContainer">
         <div className="cardNameHeading">Name</div>
         <div className="cardNameContent">{contact.name}</div>
@@ -49,7 +53,7 @@ export default function ContactUsCard({contact}) {
   }
 
   return(
-    <div className="contactUsCard">
+    <div className="contactUsCard" onClick={openModal}>
         <div className="cardNameContainer">
           <div className="cardNameHeading">Name</div>
           <div className="cardNameContent">{contact.name}</div>
