@@ -4,18 +4,31 @@ import axios from 'axios';
 import './style.css';
 import trees from './trees.png';
 
+import Ustore from '../Provider/ZusProvider.jsx'
+
 export default function Login ({ toggleModal }) {
   const [inputEmail, setInputEmail] = useState('');
   const [inputPassword, setInputPassword] = useState('');
   const [warning, setWarning] = useState('');
+
+  const switcher = Ustore((state) => state.switcher)
+  const UserSwap = Ustore((state) => state.UserSwap)
+
 
   var login = (e) => {
     e.preventDefault();
     var emailCheck = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
     if (emailCheck.test(inputEmail) && inputPassword !== '') {
       axios.post('/login', {email: inputEmail, pwd: inputPassword}).then((data) => {
+        console.log('success')
         if (typeof data.data === 'object' && data.data !== 'Incorrect password. Please try again.') {
           console.log(data.data);
+          if (data.data.employee) {
+            switcher('Employee')
+          } else {
+            UserSwap(data.data)
+            switcher('Trips')
+          }
           toggleModal('login');
         } else if (data.data === 'Incorrect password. Please try again.') {
           setWarning('wrong password');

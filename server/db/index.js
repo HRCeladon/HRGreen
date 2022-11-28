@@ -55,6 +55,7 @@ Users.count().then((ct) => {
             reviews: (Boolean(new Date(year, month, day + 3) < new Date()) && (Math.random() < 0.8) ? [
               {title: titles[Math.round(Math.random() * 4)],
               body: bodies[Math.round(Math.random() * 4)],
+              stars: Math.round(Math.random() * 5),
               media: []}
             ] : [])
           }

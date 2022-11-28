@@ -1,7 +1,9 @@
 import React from 'react';
 import ContactUsButton from '../Modals/ContactUsButton.jsx'
+import Ustore from '../Provider/ZusProvider.jsx'
 
 const Footer = () => {
+  const switcher = Ustore((state) => state.switcher);
 
   return (
     <footer className="footer-container">
@@ -14,6 +16,7 @@ const Footer = () => {
         </div>
         <div className="footer">
           <ContactUsButton />
+          <button onClick = {() => switcher('About')} style = {{border: 'none'}}className="button-nav footer-button">About Us</button>
         </div>
         <div className="logo-container">
           <div className="LogoText foot-text">TravelGreen</div>
